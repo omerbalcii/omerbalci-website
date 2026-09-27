@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ömer Balcı | Kişisel Web Sayfası</title>
+  <meta name="description" content="Ömer Balcı'nın kişisel web sayfası. Projeler, yazılar ve düşünceler.">
+  <meta property="og:title" content="Ömer Balcı | Kişisel Web Sayfası">
+  <meta property="og:description" content="Yazılım, teknoloji, projeler ve düşünceler.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://omerbalci.com.tr">
+
+  <!-- Google Fonts: Barlow & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">Ömer Balcı</a>
+      <nav class="nav-menu" id="navMenu">
+        <a href="#about" class="nav-link">Hakkımda</a>
+        <a href="#philosophy" class="nav-link">Yaklaşım</a>
+        <a href="#works" class="nav-link">Çalışmalar</a>
+        <a href="#inspiration" class="nav-link">İlham</a>
+        <a href="#contact" class="nav-link btn-nav">İletişim</a>
+      </nav>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menüyü Aç/Kapat">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="about">
+    <div class="container hero-grid">
+      <div class="hero-text-col">
+        <span class="eyebrow">Kişisel Portföy & Günlük</span>
+        <h1 class="hero-title">Myself,</h1>
+        <p class="hero-intro">
+          Merhaba, ben <strong>Ömer Balcı</strong>. Teknoloji, yazılım mimarileri ve problem çözme tutkusuyla çalışan bir geliştiriciyim. Fikirleri somut, sade ve kullanıcı odaklı çözümlere dönüştürmekten keyif alıyorum.
+        </p>
+        <p class="hero-subtext">
+          Sürekli öğrenmeyi, dijital dünyada yeni şeyler inşa etmeyi ve analitik yaklaşımla değer üretmeyi seviyorum. Burada projelerimi, düşüncelerimi ve odaklandığım alanları keşfedebilirsiniz.
+        </p>
+        <div class="hero-actions">
+          <a href="#works" class="btn btn-primary">Çalışmalarımı İncele</a>
+          <a href="#contact" class="btn btn-outline">İletişime Geç</a>
+        </div>
+      </div>
+      <div class="hero-image-col">
+        <div class="image-frame">
+          <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop" alt="Ömer Balcı - Çalışma Alanı" class="hero-img">
+          <div class="badge-status">
+            <span class="status-dot"></span>
+            <span>Yeni Projeler Geliştiriyor</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy Section -->
+  <section class="section philosophy-section" id="philosophy">
+    <div class="container">
+      <div class="quote-header">
+        <span class="section-tag">Odak Noktası</span>
+        <h2 class="section-heading">"Üretmek, zihni dinlendirir ve geleceği şekillendirir."</h2>
+      </div>
+      <div class="philosophy-grid">
+        <div class="philosophy-card">
+          <div class="card-icon">⚡</div>
+          <h3>Sadelik ve Verimlilik</h3>
+          <p>Karmaşık problemleri en yalın ve anlaşılır parçalara bölerek çözmeyi ilke ediniyorum. Temiz kod ve sürdürülebilir mimariler önceliğimdir.</p>
+        </div>
+        <div class="philosophy-card">
+          <div class="card-icon">🎯</div>
+          <h3>Çözüm Odaklılık</h3>
+          <p>Sadece teknoloji kullanmak için değil; gerçek dünyadaki bir ihtiyacı gidermek, iş süreçlerini hızlandırmak ve değer yaratmak için geliştiriyorum.</p>
+        </div>
+        <div class="philosophy-card">
+          <div class="card-icon">🌱</div>
+          <h3>Sürekli Gelişim</h3>
+          <p>Teknoloji durağan değil; her yeni gün yeni bir kütüphane, yaklaşım ve bakış açısı sunuyor. Merakımı canlı tutarak kendimi geliştiriyorum.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Works & Projects Section -->
+  <section class="section works-section" id="works">
+    <div class="container">
+      <div class="section-top">
+        <div>
+          <span class="section-tag">Portföy</span>
+          <h2 class="section-heading">Neler Üretiyorum?</h2>
+        </div>
+        <p class="section-subtitle">Yazılım projeleri, sistem entegrasyonları ve geliştirdiğim çözümlerden bazı örnekler.</p>
+      </div>
+
+      <div class="works-grid">
+        <article class="work-card">
+          <div class="work-image-wrap">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Veri ve Raporlama Platformu">
+          </div>
+          <div class="work-info">
+            <span class="work-category">Backend & Veri Mimarisi</span>
+            <h3 class="work-title">Raporlama ve Analitik Servisleri</h3>
+            <p class="work-desc">Büyük ölçekli verileri işleyen, yüksek performanslı sorgularla anlık raporlar ve paneller sunan uçtan uca altyapı tasarımı.</p>
+            <div class="work-tags">
+              <span>Java</span>
+              <span>Spring Boot</span>
+              <span>PostgreSQL</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-image-wrap">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="Web Arayüz Geliştirme">
+          </div>
+          <div class="work-info">
+            <span class="work-category">Frontend & UI/UX</span>
+            <h3 class="work-title">Modern Web Uygulama Arayüzleri</h3>
+            <p class="work-desc">Kullanıcı dostu, hızlı ve responsive modern gösterge panelleri (dashboard) ve interaktif kullanıcı deneyimleri.</p>
+            <div class="work-tags">
+              <span>React</span>
+              <span>TypeScript</span>
+              <span>REST API</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-image-wrap">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" alt="Sistem & Entegrasyon">
+          </div>
+          <div class="work-info">
+            <span class="work-category">Sistem Mimarisi</span>
+            <h3 class="work-title">Otomasyon ve Entegrasyon Çözümleri</h3>
+            <p class="work-desc">Farklı servisler arası iletişimi sağlayan mikroservis mimarileri ve iş akışlarını otomatikleştiren güvenli API kurguları.</p>
+            <div class="work-tags">
+              <span>Docker</span>
+              <span>CI/CD</span>
+              <span>Microservices</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inspiration Section -->
+  <section class="section inspiration-section" id="inspiration">
+    <div class="container">
+      <div class="section-top text-center">
+        <span class="section-tag">Bakış Açısı</span>
+        <h2 class="section-heading">Bana İlham Verenler</h2>
+        <p class="section-subtitle">Üretkenliğimi ve vizyonumu besleyen temel unsurlar.</p>
+      </div>
+
+      <div class="inspiration-grid">
+        <div class="inspiration-card">
+          <div class="insp-img-wrap">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop" alt="Teknoloji">
+          </div>
+          <div class="insp-content">
+            <h3>Teknoloji & Kod</h3>
+            <p>Birkaç satır kodun karmaşık bir sistemi kusursuz bir ritimle çalıştırması ve insanların hayatını kolaylaştırması.</p>
+          </div>
+        </div>
+
+        <div class="inspiration-card">
+          <div class="insp-img-wrap">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600&auto=format&fit=crop" alt="Doğa">
+          </div>
+          <div class="insp-content">
+            <h3>Doğa & Sadeliğin Dengesi</h3>
+            <p>Doğadaki kusursuz matematik ve huzur. Ekrandan uzaklaşıp doğayla temas etmek zihni tazeleyen en büyük güçtür.</p>
+          </div>
+        </div>
+
+        <div class="inspiration-card">
+          <div class="insp-img-wrap">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop" alt="İnsan ve Fikirler">
+          </div>
+          <div class="insp-content">
+            <h3>İnsan Hikayeleri & Fikirler</h3>
+            <p>Farklı vizyona sahip insanlarla sohbet etmek, onların deneyimlerinden beslenmek ve yeni fikirler etrafında buluşmak.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quotes / Testimonials Carousel Section -->
+  <section class="section quotes-section">
+    <div class="container">
+      <div class="quote-slider-box">
+        <div class="quote-item active">
+          <p class="quote-text">"Sadelik, mükemmelliğin en son noktasıdır."</p>
+          <span class="quote-author">— Leonardo da Vinci</span>
+        </div>
+        <div class="quote-item">
+          <p class="quote-text">"İyi kod yazmak sadece bilgisayara ne yapacağını söylemek değil; onu okuyacak insana ne yaptığını anlatmaktır."</p>
+          <span class="quote-author">— Harold Abelson</span>
+        </div>
+        <div class="quote-item">
+          <p class="quote-text">"Karmaşıklığı yönetmenin tek yolu, onu küçük ve zarif parçalara dönüştürmektir."</p>
+          <span class="quote-author">— Kişisel İlke</span>
+        </div>
+
+        <div class="slider-controls">
+          <button class="slider-btn prev-btn" id="prevQuote" aria-label="Önceki Söz">‹</button>
+          <div class="slider-dots" id="quoteDots"></div>
+          <button class="slider-btn next-btn" id="nextQuote" aria-label="Sonraki Söz">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Footer Section -->
+  <footer class="footer" id="contact">
+    <div class="container footer-content">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h2 class="footer-logo">Ömer Balcı</h2>
+          <p class="footer-tagline">Fikirleriniz, projeleriniz veya sadece bir merhaba demek için dilediğiniz zaman iletişime geçebilirsiniz.</p>
+          <a href="mailto:omer.balci@triodx.com" class="footer-email">omer.balci@triodx.com</a>
+        </div>
+        
+        <div class="footer-social-section">
+          <h4 class="social-heading">Bağlantılar</h4>
+          <div class="social-links">
+            <a href="https://github.com/ombalci" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Ömer Balcı • <a href="https://omerbalci.com.tr">omerbalci.com.tr</a>. Tüm hakları saklıdır.</p>
+        <p class="footer-meta">Minimalist & Zarif Tasarım</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
