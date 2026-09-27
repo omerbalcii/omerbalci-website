@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fullstack Java Geliştiricinin Yol Haritası | Ömer Faruk Balcı</title>
+  <meta name="description" content="Java ile backend ağırlıklı fullstack geliştirici olmak için sıfırdan mimari seviyeye kadar adım adım öğrenilmesi gereken teknolojiler, konseptler ve yol haritası.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="dilbeste-header" id="header">
+    <div class="dilbeste-container header-inner">
+      <a href="index.html" class="brand-box">
+        <img src="assets/images/developer-avatar.jpg" alt="Ömer Faruk Balcı" class="brand-avatar">
+        <div class="brand-text-wrap">
+          <span class="brand-name">Ömer Faruk Balcı</span>
+          <span class="brand-tag">Software Engineer • AI & BI</span>
+        </div>
+      </a>
+
+      <nav class="dilbeste-nav" id="navMenu">
+        <a href="index.html" class="nav-link">Anasayfa</a>
+        <a href="blog.html" target="_blank" rel="noopener noreferrer" class="nav-link active">Blog</a>
+        <a href="index.html#contact-section" class="nav-link btn-nav-cta">İletişim</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="mailto:balci.5698@gmail.com" class="header-mail-link d-none-sm">balci.5698@gmail.com</a>
+        
+        <button class="theme-toggle" id="themeToggle" aria-label="Temayı Değiştir">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <button class="hamburger-btn" id="mobileToggle" aria-label="Menü">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Article Container -->
+  <main class="section-padding">
+    <div class="dilbeste-container">
+      
+      <article>
+        <!-- Header -->
+        <div class="article-header">
+          <a href="blog.html" class="article-back-link">← Blog Listesine Dön</a>
+          <div class="blog-meta-tags" style="justify-content: center; margin-bottom: 1rem;">
+            <span class="blog-cat-link">📁 Popüler</span>
+            <span class="blog-cat-link">📁 Java</span>
+            <span class="blog-cat-link">📁 Kariyer</span>
+            <span class="blog-cat-link">📁 Fullstack</span>
+            <span class="blog-date-text">• 15 Ekim 2025</span>
+            <span class="blog-date-text">• 💬 0 Yorum</span>
+          </div>
+          <h1 class="article-main-title">Fullstack Java geliştiricinin yol haritası</h1>
+        </div>
+
+        <!-- Content Body -->
+        <div class="article-content-body">
+          <div style="text-align: center; margin: 2rem 0 3rem;">
+            <img src="assets/images/blog-fullstack-java.jpg" alt="Fullstack Java Yol Haritası" style="width: 150px; height: 150px; border-radius: 50%; margin: 0 auto; box-shadow: var(--shadow-md); object-fit: cover;">
+          </div>
+
+          <p>
+            Son zamanlarda Java ile fullstack development çalışma yapısı çok yaygınlaştı. Bu kavram backend ağırlıklı olup üzerine temel seviyede frontend yazarak geliştirme yapmak şeklinde oluyor genelde. Ben <a href="https://numankaraaslan.com/entry?ent=67&lang=en" target="_blank" rel="noopener noreferrer">full stack yazılım geliştirici</a> başlıklı yazımda da yazdığım gibi bir insanın hem frontend hem backend mantalitesine sahip olmasının ve iki tarafta da uzmanlaşmasının imkânsız olduğunu düşünüyorum. Bu yüzden genelde insanlar backend ağırlıklı veya frontend ağırlıklı fullstack gibi bir ayrım ile ikiye ayrılıyorlar. Bu yazıda Java ile backend ağırlıklı bir fullstack geliştirici olabilmek adına sıfırdan başlayarak öğrenilmesi gerektiğini düşündüğüm başlıkları ve detayları yazdım.
+          </p>
+
+          <p>
+            Bu sayede bir rehber olarak bu yazıyı alıp başlıkları sırası ile tamamlayarak gerekli yetenekleri kazanabilirsiniz. Fakat tabii ki bu kadar çok konuyu detayları ile birlikte öğrenmek aylar veya yıllar alacaktır. Zaten bu yolculuğun kısa süreceğine inanıyorsanız, yazılımın sadece kod yazmaktan ibaret olduğunu düşünüyorsanız muhtemelen bu yazıyı da okuyor olmazdınız :)
+          </p>
+
+          <p>
+            Bu yazıda belirttiğim konuları öğrenebileceğiniz kaynaklar sunmayacağım, çünkü her insan farklı şekillerde ve farklı tarzlarda öğrenmeye yatkın oluyor. Dünyada Java 'yı veya RESTful servisleri en iyi anlatan eğitim şudur şeklinde bir eğitim olması mümkün değil. Eğer bir şekilde bir bootcamp veya yazılımcı eğitimi gibi bir ortam bulursanız, konuların üst üste bindiğini ve önceki konuların sonrakilerin öncülü olduğunu fark edeceksiniz. Bu aşamada cevaplarını almış olmanız gereken sorular oluyor. Bu yazıda öğrendiğiniz konularda hangi tür sorulara cevap verebilmeniz gerektiğini de yazdım bazı yerlerde. Günün sonunda kendi seviyenizi ölçmek adına da size fikir verebilir.
+          </p>
+
+          <h2>Java Ekosistemi - JDK - JRE - JVM</h2>
+          <p>
+            Bir zamanlar her şey karanlıkta idi. Sonra "big Java bang" oldu. İlk aşamada seviyeniz ne olursa olsun Java 'da ecosystem dediğimiz kavram nedir sorusunu sormak gerekiyor. Java öğrenmeye başlayınca kütüphaneler, araçlar ve framework 'ler işin içine giriyor. Büyük resim içerisinde küçük parçaları yapboz gibi tamamlıyoruz. Günün sonunda varmaya çalışacağımız yetkinlikler haritasında neler olacak mesela? Ben bu noktada programlamanın tarihçesinden bile başlıyorum genelde ve programlama nedir diye uzun uzun konuşuyorum. Çünkü geldiğimiz noktada yaklaşık 50 yıllık bir geçmiş var. Dünden bugüne gelmedik buraya.
+          </p>
+          <p>
+            Sonrasında <strong>JDK - JRE - JVM</strong> gibi Java 'yı Java yapan özellikleri tanımak gerekiyor. Java hem bir dil hem de bir programlama yapısı çünkü. Biz neden Java öğreniyoruz sorusunun açıklamasının olması lazım. Bytecode nedir, platformdan bağımsız olmak nedir, Java 'nın C ve C++ ile alakası nedir, native kod nedir... gibi birçok soru var bu noktada.
+          </p>
+
+          <h2>Temel Algoritmalar - Variable - Class</h2>
+          <p>
+            Bir programlama dili bilgisayara neyi nasıl yapacağını söyleyen bir algoritmayı kurgulamaktır temelde. Bu yüzden biz Java yazarken bilgisayara tekrarlı bir işlem yapmayı veya koşullara göre farklı çalışması gerektiğini nasıl söyleyebiliriz, bunu bilmemiz gerekiyor. Java 'da bu kavramları gerçeklemek için ilk adımımız <code>main</code> metod ve <code>class</code> yazmak oluyor. Size komik geliyordur belki ama <strong>Main metodu gözünüz kapalı yazabiliyor olmalısınız.</strong>
+          </p>
+          <p>
+            Yazacağımız class 'lar belli verileri tutup işliyor ve istediğimiz sonucu üretiyor. Metodlar, değişkenler, döngü ve koşul ifadelerini bilmek gerekiyor. Bu da aslında Lego parçaları gibi bir yapı. Class kavramı Java için hayati önemde tabii ki. Referans göstermek nedir, <code>new</code> yapmak nedir, constructor nedir, <code>this</code> nedir... gibi birçok soru var burada. Burası ezbere geçilecek kısımlar değil. Java 'yı Java 'ca düşünmek gerekiyor. Nasıl bir yabancı dili düşünerek konuşmadığımız zaman native oluyorsak programlama dili de öyledir. İçinize ve düşünce yapınıza yerleşmesi gerekir.
+          </p>
+
+          <h2>Heap - Stack - Garbage Collector</h2>
+          <p>
+            Çok zorunlu olmasa da Java 'nın arka planda hafıza yönetimi konusunda bilgi sahibi olmakta fayda var. Hangi alanlar nasıl yönetilir, ne anlama gelir sorularına bakılabilir. <strong>Garbage collection</strong>, yani kullanılmayan verinin silinmesi ne demektir ve kullanılmayan veri ne anlama gelir soruları da önemli oluyor. Çünkü konunun içinde bir yerde Java 'nın call by reference çalışması da geçecektir.
+          </p>
+          <p>
+            Buraya kadar Java 'ya nasıl emir vermemiz gerektiğini keşfetmiş oluyoruz. Biz 1 satır yazıyoruz o arka planda fırtınalar koparıyor. Bu aşamada Java öğrenmeye ve yazmaya isteğiniz olup olmadığını keşfedersiniz. Bu dilin sizi nasıl bir yere doğru götürdüğünü görebiliyor olmanız lazım. Artık dili tanıdığınız noktada dil ile tasarımlar yapmaya başlıyorsunuz.
+          </p>
+
+          <h2>Encapsulation - Abstraction - Immutability - Inheritance - Polymorphism</h2>
+          <p>
+            Bu başlıklar tabii ki <strong>Object Oriented Programming (OOP)</strong> kavramlarımız. Burada biz neden OOP yapıyoruz, yapmasak ne olurdu gibi soruları açıklayabilmek gerekiyor. Neden C gibi dümdüz kitap gibi kod yazmıyoruz da sürekli sınıflar, abstract yapılar, interface 'ler, override 'lar gibi kavramları konuşuyoruz? Sınıfların birbirleri ile ilişkisinin olması neden gerekli olabilir?
+          </p>
+          <p>
+            Tabi bu konular artık aşırı soyuta kaçtığı için sadece teknik terimlerle anlaşılmıyor. Hatta bana sorarsanız havalı kelimelerle bu konuları anlatmak hiçbir işe yaramıyor. Bu soyut kavramları yazıp sonuçlarına şahit olmak gerekiyor. Önce bu kavramları kullanmadan nasıl düşündüğümüzü ve nasıl sonuçlar elde ettiğimizi ve sonrasında nelere sebep olduğunu görmemiz gerekiyor. Yoksa ileride göreceğimiz abstract sınıflar veya interface 'ler veya değişik injection 'lar bize anlamlı gelmez. Dışarıdan bakılınca bazı kütüphane veya framework 'ler hatta dökümantasyonda yazılan ifadeler bile size keyfi yazılmış gibi gelecektir. Java konsensusu burada başlıyor.
+          </p>
+
+          <h2>Exception Handling</h2>
+          <p>
+            Hata yönetimi konusu Java 'nın kendisi için en öncelikli konulardan olmasa da bilinmesinde fayda görüyorum. Üzerine uzun uzun yazılacak bir konu değil belki ama projeleriniz büyüdükçe dertleriniz de büyüyor ve çeşitleniyor. Hata yakalama konusunda sadece kod hatası değil mantık hataları veya sistem hataları olması durumunda ne gibi yaklaşımlar mümkündür gibi sorular sorulabilir.
+          </p>
+
+          <h2>Generics - Annotations - Reflection</h2>
+          <p>
+            Benim verdiğim eğitimlere katılan kişiler bu 3 konuya ne kadar önem verdiğimi bilir :) Özellikle <strong>annotation</strong> ve <strong>reflection</strong> kavramı ilk başta havada kalsa da bir noktada mutlaka bilinmesi gerekiyor. Daha sonra kütüphanelerde veya framework 'lerde karşımıza çok çıkıyor çünkü.
+          </p>
+          <p>
+            Burada örneğin generic yapısı olmadan collection sınıfları var olabilirdi ama sadece <code>Object</code> tutabilirdi ve type safety 'yi sağlamak zorlaşırdı. Annotation kavramı olmasa idi reflection ile kodlara eriştiğimizde metodların veya sınıfların içerisinde neler olduğunu veya neden var oldukları bilgisini sunamazdık. Zaten reflection olmasa idi annotation ihtiyacı da duymazdık.
+          </p>
+          <p>
+            Reflection ise Java ile Java 'yı görmek ve çalıştırmaktır. Buna neden gerek var sorusunun cevabı <em>Dependency Inversion</em> veya <em>Inversion of Control (IoC)</em> ile ilgilidir. Bu 2 konunun neden var olduğunu da sormalıyız tabii ki. Muhtemelen framework yazarak insanlara altyapıyı sunup yukarıda bunları işleten kodlar yazabilmek için diye cevap verebiliriz.
+          </p>
+
+          <h2>Design Patterns (Tasarım Desenleri)</h2>
+          <p>
+            Tasarım desenleri konusu Java 'dan tamamen bağımsızdır. Ama Java geliştiricisi iseniz tasarım desenlerinin Java 'da nasıl implement edildiğini görmelisiniz. Bu konu biraz da vizyon ile alakalı. Örneğin size elektrikli aletlerle ilgili bir kavram olan "adaptör" kavramını söylediğim anda aklınıza içi karmaşık ama dışarıdan bakınca basit bir elektronik parça geliyordur. Bu sayede detayları ve uygulaması değişebilen fakat ana teması ve işlevi belli olan bir mekanizmayı kolayca birbirimize ifade edebiliyoruz. Bu mantığın aynısı tasarım desenlerinde de geçiyor. Belli bir desen size herkesin anlayabileceği bir rehber sunuyor.
+          </p>
+
+          <h2>Threads – Concurrency</h2>
+          <p>
+            Biraz ekstra bence bu konu ama genel kültür olması açısından bilmekte fayda görüyorum. Çok detaylı olmasa da Java 'da <code>Thread</code> sınıfına, <code>Runnable</code> ve <code>Callable</code> mantıklarına bir göz atılabilir. Thread 2 sebepten oluşturulur: Ya işlemi parçalara bölüp performansı arttırmak için ya da aynı anda birden fazla işi yürütebiliyor olmak için. İkisi günün sonunda benzer görünür ama birisi içerisinde <code>wait</code>, <code>notify</code> gibi noktalara girer, diğeri sadece her biri ayrı telden çalan işlemler oluşturur. Bir sunucunun thread 'ler ile çalıştığını ve nasıl çalışabildiğini anlayacak kadar bilmek yeterlidir diye düşünüyorum.
+          </p>
+
+          <blockquote>
+            "Not: Bilgisayar mühendisliği bölümünün veri yapıları, algoritmalar, işletim sistemleri ve bilgisayar ağları dersleri hayati öneme sahip. Bu dersleri hiç görmeden yazılım öğrenmeye başlamak, arabanın motoru konusunda bilgisi olmadan yarışçı olmaya çalışmaya benzer."
+          </blockquote>
+
+          <h2>JDBC</h2>
+          <p>
+            Java ile veritabanına bağlanıyorsanız yolunuz mutlaka JDBC 'den geçecektir. JDBC dediğimiz yapının bir standart olduğunu, bir JSR karşılığının olduğunu ve hatta bu JSR 'lerin bizim Java hayatımızda çok şey değiştirdiğini bilmek gerekiyor. Çünkü JDBC ile veritabanına bağlanmak için yapmanız gereken topu topu 3 adım var: Connection açmak, statement oluşturmak ve gerekli query veya execute 'u çalıştırmak; varsa ResultSet 'i okuyup connection 'ı kapatmak.
+          </p>
+          <p>
+            Ama konu aslında JDBC 'nin nasıl olup da farklı veritabanlarında çalışabildiği ve neden böyle bir standardizasyona gidildiğini anlamak. Kodlarda interface metodları çağırdığımız halde nasıl oluyor da gerçek class 'ların metodları harekete geçiyor mesela?
+          </p>
+
+          <h2>RESTful Services</h2>
+          <p>
+            Önce şunu belirteyim, SOAP servisleri adamdan saymıyorum :) Daha doğrusu SOAP servislerin çoğunlukla sizi monolitik uygulamalara doğru götüreceğini düşünüyorum. Bu yüzden Java ile SOAP servisler tüketilebilir mi derseniz evet ama ben yapmazdım diyebilirim.
+          </p>
+          <p>
+            Bu noktada artık web uygulaması nedir, Tomcat veya JBoss veya GlassFish nedir gibi sorular giriyor hayatımıza. Çünkü masaüstü uygulamaları yapmadığımız için uygulamalarımıza web üzerinden erişiyoruz. Bu yüzden Java ile bir web uygulaması nasıl sunulur ve erişilir konusuna bakmak gerekiyor. Her ne kadar RESTful servis konusu anlaşılması kolay olsa da Java 'daki altyapısı yeterince karmaşık.
+          </p>
+          <p>
+            Ben bu konuda şu soruyu sorarak başlıyorum: <em>Benim bilgisayarımdaki bir Java metodunu kendi bilgisayarınızdan nasıl çalıştırabilirsiniz?</em> Bu sistemi oturtmak için network nedir, OSI katmanları nedir, IP/port nedir, server/servlet nedir, request ve response nedir sorularının cevabını verebiliyor olmak zorundasınız.
+          </p>
+
+          <h2>Yol Ayırımı 1: Framework Tercihi</h2>
+          <p>
+            Bu noktada Java ile framework 'ler konusuna girmek istiyor musunuz sorusunu kendinize sorabilirsiniz. Örneğin sadece Jersey ile RESTful servisler yazıp bunu GlassFish veya Payara üzerinde çalıştırabilirsiniz. Bu şekilde backend 'iniz hazır olur ve ön tarafa bir React.js web uygulaması veya bir mobil uygulama koyabilirsiniz. Eğer devam edecekseniz JakartaEE veya Spring Framework seçenekleri mevcut. Bu durumda muhtemelen Spring Framework 'ü tercih edeceksinizdir. Ben yine de 2 yolu da yazayım. Spring Framework 'ü daha çok kullandım ama Jakarta 'yı da kurcaladım ve bir <a href="https://numankaraaslan.com/entry?ent=75&lang=en" target="_blank" rel="noopener noreferrer">blog yazısı</a> yazdım, dilerseniz bakabilirsiniz.
+          </p>
+
+          <h2>JavaEE – JakartaEE</h2>
+          <p>
+            Java ile framework kullanmak istiyorsanız ama Spring Framework size fazla karmaşık geliyorsa JakartaEE ve EJB konularına girebilirsiniz. Eskiden yazılan enterprise Java uygulamaları günümüzde daha anlaşılır bir şekilde geliştirilebiliyor. Tabii ki Spring Cloud 'da olduğu gibi service registry veya resilience gibi kavramlar Jakarta 'da bulunmadığı için bir mikroservis uygulaması geliştirmek henüz çok anlamlı görünmüyor. Ama bir load balancing sistemi arkasında Jakarta RESTful servislerini koyarak da güzel bir sistem tasarlanabiliyor.
+          </p>
+
+          <h2>Spring Framework</h2>
+          <p>
+            Eskiden Spring yoktu, buralar hep XML dosyaları ile dolu idi. Şimdi Spring Framework çıktı ve hem Dependency Injection hem Inversion of Control konularında bize yardımcı oluyor. Bu noktada artık Spring Framework 'ü nasıl kullanabilirim, bana neler sağlıyor sorularına odaklanmak gerekiyor. Arka plandaki yönetimini ve mantığını bilmek zorunda değilsiniz ama yerine göre doğru kullanmak için Spring 'i tanımak da gerekebiliyor. <code>UnsatisfiedDependencyException</code> nedir ve neden oluşabilir diye sormak gerekiyor.
+          </p>
+          <p>
+            Tabi ki Spring Framework aslında JavaEE üzerine kurulmuş bir framework. Bir stack trace örneğine baktığınızda Jakarta Servlet 'inden geçtiğini görüyorsunuz. Bu stack trace 'leri okuyabilmek gerekiyor.
+          </p>
+
+          <h2>Spring Boot</h2>
+          <p>
+            Spring Boot dediğimizde cevaplamanız gereken ilk soru: <em>Spring Boot neden var?</em> Çünkü eğer Spring Boot 'un gerekliliğini göremiyorsanız yeterince Spring Framework ile uğraşmamışsınızdır. Aslında Spring 'in sürekli konfigürasyon yaptırmasından ve birbirinden kopuk bağlantılarından bıktığınız yerde Spring Boot 'un otonom konfigürasyon cenneti olduğunu görüyorsunuz.
+          </p>
+          <p>
+            Data JPA güzel çalışıyor, tabii ki JDBC de çalışıyor, Actuator ve internationalization güzel çalışıyor, Swagger ile kolay entegre olabiliyor. Sonrasında daha da ilerisi Spring Cloud ile mikroservis nasıl yapılır sorusuna bakılabilir.
+          </p>
+
+          <h2>Yol Ayırımı 2: Frontend Mimarisi</h2>
+          <p>
+            Backend bence bitti. Tabii ben bitti diyorum ama sizin için aylar geçmiş olabilir :) Bu noktada frontend tarafını nasıl yapacağınıza karar vermeniz gerekiyor. Tamamen bağımsız bir JavaScript framework 'ü mü kullanacaksınız (React, Angular, Vue gibi), yoksa MVC ile projeyi yapıp backend 'de arayüzü render edip gönderecek misiniz?
+          </p>
+
+          <h2>Thymeleaf - JSP</h2>
+          <p>
+            Thymeleaf veya JSP MVC projelerinde server tarafında Java ile desteklenerek render edilip frontend 'e yani browser 'a gönderilen yapılardır. RESTful servis yerine MVC projesi oluşturursunuz. Thymeleaf çoğunlukla Spring Framework 'e entegre olmuş görünüyor ama Jakarta ile de çalışıyor.
+          </p>
+          <p>
+            Bu teknolojiler servlet tarafından Java ile işlenen dinamik ekranlardır. Arka planda Spring Security ile çalışabilmeleri sayesinde her türlü büyük sistemde production ortamında güvenle kullanılabilir.
+          </p>
+
+          <h2>JQuery - React - Angular - Vue (Önce JavaScript)</h2>
+          <p>
+            Frontend konusunda ayrı bir uygulama yazıp RESTful servis ile backend 'inize bağlanacaksanız öncelikle JavaScript üzerine çalışmak gerekecektir. Çünkü eskisi gibi statik HTML sayfaları yazmıyoruz. Dinamik sayfalar ise JavaScript ile çalışıyor.
+          </p>
+          <p>
+            React.js, Angular ve Vue.js çok sık duyduğum framework 'ler. Benim gördüğüm kadarıyla Angular kurumsal ve gelişmiş ama yapısı gereği kapsamlı. Vue.js basit ama ekosistemi daha küçük. React.js ise component tasarımı üzerine odaklanan geniş bir topluluğa sahip. Tabii ki bu teknolojileri mümkünse <strong>TypeScript</strong> ile yazmanızı tavsiye ederim; çünkü Java 'daki nesne yönelimli düşünce yapısına en çok benzeyen yapıyı TypeScript sunuyor.
+          </p>
+
+          <h2>Hibernate, Unit Test, Security, JWT, Docker ??</h2>
+          <p>
+            Bu başlıklar olmazsa olmaz değil ama sizin fullstack geliştiricilik skalanızı büyütecektir:
+          </p>
+          <ul>
+            <li><strong>Hibernate ORM:</strong> JDBC yerine kullanılabilecek güçlü bir veri modelleme ve ORM kütüphanesidir. Persistence context kavramını ve entity ilişkilerini doğru yönetmek gerekir.</li>
+            <li><strong>Unit Test (JUnit & AssertJ):</strong> Maven veya Gradle ile testlerin otomatik çalıştırılması, test güdümlü geliştirme alışkanlığı.</li>
+            <li><strong>Security & JWT:</strong> Stateless mimarilerde JSON Web Token ile kimlik doğrulama ve yetkilendirme standartları.</li>
+            <li><strong>Docker & CI/CD:</strong> Konteynerleştirme, Jenkins, GitHub Actions veya SonarQube ile build ve deployment otomasyonları.</li>
+          </ul>
+
+          <h2>Database (İlişkisel & NoSQL)</h2>
+          <p>
+            Veritabanları ister istemez girmek zorunda kalacağınız bir konudur. Günümüzde temelde 2 'ye ayrılıyorlar: Relational (PostgreSQL, Oracle, MySQL, MSSQL) ve NoSQL (MongoDB, Redis, Couchbase). Tablo, constraint, view, index kavramlarını bilmek ve karmaşık sorguları, JOIN 'leri ve transaction yönetimini kavramak şarttır.
+          </p>
+
+          <h2>Hayırlı olsun, artık kod yazabilirsiniz</h2>
+          <p>
+            Tabi biraz da şaka ile karışık, kendi kendine yeten bir developer olmanız için bilmeniz gerekenler listesi bu kadar. Uzun bir yol ve kalabalık bir liste ama emin olun bundan sonrası da var. Mikroservisler, RabbitMQ, Kafka, SAGA ve CQRS gibi dağıtık mimariler sizi bekliyor.
+          </p>
+
+          <blockquote>
+            "Bu sürecin eğitim karşılığı haftada 5 gün olacak şekilde yaklaşık 3 ay oluyor (10 - 15 hafta). Kendi kendinize veya projeler geliştirerek çalışacaksanız 9 - 12 ay kadar emek vermeniz gerekebilir. Umarım bu yol haritası kariyerinizde güçlü bir rehber olur. Bir sonraki yazıda görüşmek üzere :)"
+          </blockquote>
+
+          <div style="margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <a href="blog.html" class="btn-theme-outline" style="color: var(--text-main); border-color: var(--border);">← Blog Listesi</a>
+            <a href="blog-numain-rag.html" class="btn-theme-primary">Sonraki: OMR RAG →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="dilbeste-footer" style="padding-top: 3rem;">
+    <div class="dilbeste-container footer-bottom-inner" style="border: none;">
+      <p>&copy; 2026 Ömer Faruk Balcı • <a href="index.html">omerbalci.com.tr</a></p>
+      <a href="blog.html" class="footer-cta-pill">Blog Listesine Dön</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

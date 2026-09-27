@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OMR: Yapay Zeka ve RAG ile Ölümsüz Olmak | Ömer Faruk Balcı</title>
+  <meta name="description" content="Yapay zeka konusunda RAG (Retrieval Augmented Generation) kullanarak bildiklerimi benim gibi söyleyen bir sistem tasarlayabildim.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="dilbeste-header" id="header">
+    <div class="dilbeste-container header-inner">
+      <a href="index.html" class="brand-box">
+        <img src="assets/images/developer-avatar.jpg" alt="Ömer Faruk Balcı" class="brand-avatar">
+        <div class="brand-text-wrap">
+          <span class="brand-name">Ömer Faruk Balcı</span>
+          <span class="brand-tag">Software Engineer • AI & BI</span>
+        </div>
+      </a>
+
+      <nav class="dilbeste-nav" id="navMenu">
+        <a href="index.html" class="nav-link">Anasayfa</a>
+        <a href="blog.html" target="_blank" rel="noopener noreferrer" class="nav-link active">Blog</a>
+        <a href="index.html#contact-section" class="nav-link btn-nav-cta">İletişim</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="mailto:balci.5698@gmail.com" class="header-mail-link d-none-sm">balci.5698@gmail.com</a>
+        
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Temayı Değiştir">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <button class="hamburger-btn" id="mobileToggle" aria-label="Menü">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Article Container -->
+  <main class="section-padding">
+    <div class="dilbeste-container">
+      
+      <article>
+        <!-- Header -->
+        <div class="article-header">
+          <a href="blog.html" class="article-back-link">← Blog Listesine Dön</a>
+          <div class="blog-meta-tags" style="justify-content: center; margin-bottom: 1rem;">
+            <span class="blog-cat-link">📁 Yazılım</span>
+            <span class="blog-cat-link">📁 Yapay Zeka</span>
+            <span class="blog-date-text">• 12 Eylül 2025</span>
+            <span class="blog-date-text">• 💬 0 Yorum</span>
+          </div>
+          <h1 class="article-main-title">OMR: Yapay zeka ve RAG ile ölümsüz olmak</h1>
+        </div>
+
+        <!-- Content Body -->
+        <div class="article-content-body">
+          <div style="text-align: center; margin: 2rem 0 3rem;">
+            <img src="assets/images/blog-rag.png" alt="YAŞIYOR! IT'S ALIVE!" style="width: 140px; height: 140px; border-radius: 50%; margin: 0 auto; box-shadow: var(--shadow-md);">
+          </div>
+
+          <p>
+            Veee 100. yazıya geldik :) Blog yazmaya başlayalı 5 yıl oldu ve bu noktada blog yazılarımın toplamının benim görüşlerimin çoğunu yansıtabileceğini fark ettim. Yani benim bütün yazılarımı tek tek okursanız, hayat görüşüm ve tecrübelerim hakkında epeyce bilgi edinebilirsiniz. Fakat birine "benim bütün yazılarımı oku" demek ve 100 adet yazıyı okumasını beklemek anlamsız olacağı için blogda bir arama fonksiyonu hazırlamayı düşünüyordum.
+          </p>
+
+          <p>
+            Bu özelliği geliştirme fikrini kafamda evirip çevirirken yapay zekanın bir parçası olan <strong>RAG</strong> yani <strong>Retrieval Augmented Generation</strong> konusunu keşfettim. Basitçe açıklamam gerekirse, yapay zekaya bir soru soruyorsunuz, sistem benim blog yazılarımda ilgili paragrafları buluyor ve sadece bu paragrafları göstermek yerine LLM mantığı ile benim tarzıma sadık kalarak bir cevaba çeviriyor.
+          </p>
+
+          <p>
+            İsmi size saçma gelebilir ama adım <strong>Ömer</strong> olduğu için bu sisteme <strong>OMR</strong> adını verdim :) Benim yazdıklarımdan yola çıktığı için benim gibi konuşan bir soru-cevap ortamı oluştu. Bu yüzden bir bakıma ölümsüzlüğe benzetiyorum. Eğer RAG sisteminin teknik detaylarını merak ediyorsanız bu blog yazısında açıklayacağım.
+          </p>
+
+          <blockquote>
+            "YAŞIYOR !!! — Bir insanın zihinsel birikimi, doğru modellenmiş bir RAG mimarisiyle zamansız bir dijital akla dönüşebilir."
+          </blockquote>
+
+          <h2>RAG nedir?</h2>
+          <p>
+            Bugünlerde makine öğrenmesinin bir sonucu olarak yapay zeka hayatımıza girdi. Bu yapay zekanın da iyi yaptığı şey aslında <strong>Large Language Model (LLM)</strong>, yani büyük dil modelleri; bildiği veri üzerinden insan gibi konuşabilen ve bazı çıkarımlar yapabilen sistemler. LLM modellerinin bazı seviyelerde eksikleri var tabii ve bu da normal ve beklenen bir şey. Mesela yeterli bilgiye sahip olmadığı zaman halüsinasyona girebiliyorlar. Eğitim verileri yanlı ise yapay zekası da yanlı olabiliyor. Yanlış bilgi ile eğitildikleri zaman yanlış da olsa bildiklerinden %100 emin olabiliyorlar.
+          </p>
+          <p>
+            ChatGPT gibi yapay zekaların web araması veya research özellikleri olsa da her konuda güncel bilgilere sahip değiller. Fakat bunların hepsi bir yana, bilmedikleri bir soru sorulduğunda ya halüsinasyona girerler ya da bilmiyorum der ve susarlar, otur sıfır. :) Mesela bir e-ticaret sitesinde bir ürüne yapılan yorumu bilemezler. Dünkü maçı kimin kazandığını bilemezler. Benim blogda en son yazımda ne yazdığımı bilemezler.
+          </p>
+          <p>
+            Bu konularda agent mantığında veya çeşitli araçlar yardımı ile yapay zeka sizin sisteminize entegre edilebilir. Fakat bütün sistemi toptan yapay zekaya bağımlı kılmak yerine, yapay zekaya özel bilginizi verip o bilgi üzerinden çıkarımını yapmasını isteyebilirsiniz. Yani <strong>RAG dediğimiz şey yapay zekaya context olarak bilgi sunmak ve bunu değerlendirip LLM tarzında bir cevaba çevirmesini istemektir.</strong> Context sizin datanızdır ve datanızdaki ilgili kısımları siz arayıp bulursunuz ve yapay zekaya sunarsınız. İşin temeli budur.
+          </p>
+          <p>
+            Sadece bir arama fonksiyonu yerine RAG sistemi kurgulamamın özel bir sebebi var: Blogda benim yazdıklarıma bakarak ilgili ifadeleri bulup benim gibi konuşabilen bir soru-cevap sistemi oluşturmak istedim. Bunu muhtemelen yapay zekanın bağlandığı bir "tool" ile yapabilirsiniz. Bu araç benim bloguma bağlanır, arama yapar, sonuçları alır ve bunlar üzerinden konuşabilir. Fakat her soru için blogdaki 100 yazıya veya ileride de yazacaklarıma bakması epeyce maliyetli olur muhtemelen. Ayrıca cevapların kendi tonlaması ile değil benim tarzımla yazılmasını ve sadece benim yazdıklarıma sadık kalmasını da istiyorum.
+          </p>
+          <p>
+            Ayrıca bütün sistemin benim sunucumda çalışmasını ve 3. parti erişiminin olmamasını istiyorum. Elinizde sadece 2 dosya ve Flask sunucusu çalıştıran 1 adet Python script'i varsa, benim sistemimi ayağa kaldırmanız mümkün. Size öncelikle yapılacaklar listesini sunayım ama unutmayın, her adımın önemli detayları var:
+          </p>
+
+          <ol style="margin-left: 1.5rem; margin-bottom: 2rem; line-height: 1.8;">
+            <li>Yazmak istediklerinizi bütünlük içerisinde paragraflar halinde yazın</li>
+            <li>Paragraflardaki belirsiz referansları düzeltin, mesela "this, that, it, the above" gibi</li>
+            <li>Yapay zekaya yazılarınızı chunk'lara ayırmasını söyleyin</li>
+            <li>Yapay zeka ile embedding vektörlerini çıkarın</li>
+            <li>Bir vektör veritabanı oluşturun (FAISS.index ve pickle dosyası)</li>
+            <li>Kullanıcıdan soruyu alın ve sorunun da embedding vektör bilgisini yapay zekadan alın</li>
+            <li>FAISS vektör veritabanında soru için oluşturulan vektörü arayın</li>
+            <li>Vektör araması sonucunda ilgili chunk'ları yani yazıları pkl dosyasından alın</li>
+            <li>Chunk'ları yapay zekaya context olarak verin ve cevabı yorumlamasını isteyin</li>
+          </ol>
+
+          <h2>Herşey veri ile başlıyor</h2>
+          <p>
+            Bir yapay zeka sistemi yapmak veya yapay zekayı icat etmek istiyorsanız, veri sizin başlangıç noktanızdır. Hiçbir gözetim olmadan veri çöplüğü toparlayıp yapay zekanın sihirli bir güç ile doğru anlamı çıkarmasını bekleyemezsiniz. Bir RAG sisteminde ilk işiniz verinizi chunk'lara ayırılabilecek hale getirmektir. RAG sistemlerinde genelde veriniz resim veya ses yerine yazılı formatta olur. Bu yüzden yazılarınızın okuyucu için değil, RAG sistemi için anlamlı olması gerekir.
+          </p>
+          <p>
+            Genelde blog yazılarımı kendi içinde tutarlı ve bütünlüklü paragraflar halinde yazmaya çalışıyorum. Bu yüzden bir yazıda bir paragrafı okuduğunuzda belli bir anlam çıkarabilirsiniz veya bir bilgi edinebilirsiniz. Ama bazen de yazı yazarken başka paragraflardaki ifadelere referans verirsiniz. Mesela sosyal medya konusunda bir yazı yazarken "bu davranış tehlikelidir" diye bir ifade görseniz, diğer paragraflara bakarak "burada bir üstteki paragrafta özetlediği insan davranışından bahsediyor" gibi bir çıkarım yapabilirsiniz. Çünkü konunun yani context'in geneli zaten hafızanızdadır.
+          </p>
+          <p>
+            Ama bir RAG sisteminde bir blog yazısının tamamını context olarak vermek çok anlamlı değildir. Çünkü gereksiz ve alakasız veriler sunarak yapay zekanın kafasının karışmasına sebep olabilir. Hatta belki de 5 farklı blog yazısında soru ile ilgili bir şeyler yazılmış ise 5 farklı blog yazısı sunmak zorunda kalabilirsiniz. Bu yüzden size veri chunk'ları yani parçacıkları gerekir.
+          </p>
+
+          <p>
+            Yazılarınızı kendi içinde tutarlı yazabiliyorsanız, bir blog postunu aşağıdaki prompt ile RAG-ready hale getirebilirsiniz:
+          </p>
+
+          <pre><code>You are a RAG optimization assistant. I am trying to make my blog posts RAG optimized. The following blog post will be stored as chunks with gpt4o, mostly 1 paragraph - 1 chunk. After that i will create embedding and faiss index files. So you get the idea. Your job is to identify and rewrite the vague or referential sentences (like those using 'he', 'she', 'this', 'that', 'the second', 'above', etc.) that would break context when chunked. DO NOT change any tags like [REF:], [IMAGE:], [ARCHETYPE:], [LAWARTICLE:] they are intentional. DO NOT add or remove paragraphs — replace vague sentences only. Return the entire blog post back to me after changing the problematic sentences in paragraphs. Don't explain or add new things. Here is the blog post:</code></pre>
+
+          <h2>Chunkification</h2>
+          <p>
+            Chunk oluşturma işlemine <em>chunkification</em> diyorum :) Aşağıdaki script, <code>post.txt</code> isimli dosyayı okuyor. Bu dosyada blog yazıları <code>=== POST START: başlık ===</code> ve <code>=== POST END ===</code> ifadeleri ile birbirinden ayrışıyor. Çok ilkel bir yöntem ama harika çalışıyor. Bütün blog yazıları bulunuyor ve bir döngü ile yapay zekaya tek tek gönderiliyor.
+          </p>
+
+          <pre><code class="language-python">import json
+import re
+import time
+from openai import OpenAI
+
+client = OpenAI(api_key="sk-proj-xxxxx")
+input_file = "post.txt"
+output_file = "chunks.json"
+model = "gpt-4o"
+
+def split_posts(raw_text):
+    return re.findall(r"=== POST START: (.*?) ===\n(.*?)=== POST END ===", raw_text, re.DOTALL)
+
+def chunkify(text, title="(unknown)", max_attempts=5, sleep_seconds=3):
+    system_prompt = (
+        "You are a JSON chunking assistant for a blog archive. "
+        "Split the blog-style text into coherent, context-preserving JSON chunks. "
+        "Each chunk must be a dictionary with keys: 'id', 'text', 'source', and 'section' (string). "
+        "If no section header applies, set 'section' to ''.\n\n"
+        "- Preserve paragraph boundaries.\n"
+        "- Keep formatting like SECTION headers, [REF:], [IMAGE:], etc.\n"
+        "- Do NOT summarize or modify meaning.\n"
+        "- Use numeric chunk IDs like 'post-1-chunk-1'.\n"
+        "- 'source' must contain the blog post title."
+    )
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": f"Split this blog post into JSON chunks:\n\n{text}"}
+    ]
+    for attempt in range(1, max_attempts + 1):
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                messages=messages
+            )
+            raw_output = response.choices[0].message.content.strip()
+            try:
+                return json.loads(raw_output)
+            except json.JSONDecodeError:
+                pass
+            raw_output = re.sub(r"^```json", "", raw_output, flags=re.MULTILINE).strip()
+            raw_output = re.sub(r"```$", "", raw_output, flags=re.MULTILINE).strip()
+            try:
+                return json.loads(raw_output)
+            except json.JSONDecodeError:
+                pass
+            objects = re.findall(r"\{.*?\}", raw_output, re.DOTALL)
+            if not objects:
+                print(f"⚠️ Attempt {attempt}: No JSON chunks found.")
+                raise ValueError("No JSON chunks found in GPT output")
+            return [json.loads(obj) for obj in objects]
+        except Exception as e:
+            print(f"❌ Chunkify attempt {attempt} failed: {e}")
+            if attempt < max_attempts:
+                time.sleep(sleep_seconds * attempt)
+            else:
+                raise
+
+def extract_keywords(text, max_attempts=5, sleep_seconds=2):
+    system_prompt = (
+        "You are a keyword extraction assistant.\n"
+        "Extract **between 1 and 6** concise keywords that reflect the main topics, concepts, or people in the text.\n"
+        "Avoid vague words like 'this', 'thing', or 'example'.\n"
+        "Use singular forms only — e.g., write 'flower' instead of 'flowers'.\n"
+        "Return the keywords **ONLY** as a JSON array of strings, with no explanations or extra text."
+    )
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": text}
+    ]
+    for attempt in range(1, max_attempts + 1):
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                messages=messages
+            )
+            content = response.choices[0].message.content.strip()
+            content = re.sub(r"^```json", "", content, flags=re.MULTILINE).strip()
+            content = re.sub(r"```$", "", content, flags=re.MULTILINE).strip()
+            match = re.search(r"\[\s*(?:\"[^\"]*\"\s*,?\s*)+\]", content, re.DOTALL)
+            if match:
+                return json.loads(match.group(0))
+            elif attempt == max_attempts:
+                print(f"⚠️ Giving up on keywords after {attempt} attempts. Returning empty list.")
+                return []
+        except Exception as e:
+            print(f"❌ Keyword attempt {attempt} failed: {e}")
+            if attempt < max_attempts:
+                time.sleep(sleep_seconds * attempt)
+            else:
+                return []
+
+if __name__ == "__main__":
+    with open(input_file, "r", encoding="utf-8") as f:
+        raw_text = f.read()
+    posts = split_posts(raw_text)
+    chunks, global_id = [], 1
+    for i, (title, body) in enumerate(posts, 1):
+        print(f"✂️ Chunkifying: {title}")
+        try:
+            chs = chunkify(body, title)
+            for idx, c in enumerate(chs):
+                c["id"] = global_id
+                c["source"] = title
+                c["section"] = c.get("section", "")
+                keyword_prompt = (
+                    "Given the following full blog post, extract 1–6 concise keywords for the INDIVIDUAL PARAGRAPH below.\n\n"
+                    "Avoid vague words like 'thing', 'this', 'example'.\n"
+                    "Use singular nouns, no extra text.\n\n"
+                    f"FULL POST:\n{body.strip()}\n\n"
+                    f"TARGET PARAGRAPH:\n{c['text'].strip()}"
+                )
+                c["keywords"] = extract_keywords(keyword_prompt)
+                global_id += 1
+                chunks.append(c)
+        except Exception as e:
+            print(f"❌ Failed on '{title}': {str(e)}")
+    if chunks:
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump(chunks, f, indent=2, ensure_ascii=False)
+        print(f"✅ {output_file} written with {len(chunks)} chunks.")</code></pre>
+
+          <p>
+            Böylece <code>python chunkify.py</code> komutu ile bu dosyayı çalıştırdığınızda aşağıdaki gibi JSON çıktınız hazır olur:
+          </p>
+
+          <pre><code class="language-json">{
+  "id": 123,
+  "text": "Long story short, we started sharing fake things on social media. Then [REF: Algorithms] shaped our habits and we started sharing things that we don't ACTUALLY believe or have. Then we normalized it and built a life on top of it. Then we got used to fake content and behaviour and artificial intelligence fueled it...",
+  "source": "Ordinarity of fake",
+  "keywords": [
+    "social media",
+    "algorithm",
+    "artificial intelligence",
+    "fake content",
+    "Descartes",
+    "philosophy"
+  ]
+}</code></pre>
+
+          <h2>Index ve Pickle Dosyalarını Oluşturmak</h2>
+          <p>
+            <code>chunks.json</code> oluştuktan sonra sırada vektörleri vektör veritabanına yazma işlemi var. Bunun için chunk'larınızı embedding vektörlerine çevirmeniz gerekiyor. Sonuçta oluşan verinin büyüklüğü orijinal metin verisinden 10 kat kadar büyük olabiliyor. Vektörleri saklayabilen veritabanları var ama ben sırf bu iş için harici bir veritabanı kurmak istemedim. Zaten hayatım boyunca yazabileceğim şeylerin hepsini bile toplasanız, modern bir işlemciyi yoracak kadar vektör araması işlemi yapacak bir durum oluşamaz.
+          </p>
+          <p>
+            Vektör işlemleri temelde matematiksel işlemlerdir ve her zaman süper bir GPU gerektirmeyebilir. Benim yazılarımda bir şeyler aramak minicik bir işlem. Ama embedding vektörü oluşturmak büyük bir iş ve yapay zekanın yapması gerekiyor. Embedding ile sizin bir chunk'ınız, 3000'den fazla boyutu olan bir vektöre dönüşebiliyor. Ben en güncel ve güvenilir olarak OpenAI'ın <code>text-embedding-3-large</code> modelini kullandım.
+          </p>
+
+          <pre><code class="language-python">import json
+import faiss
+import pickle
+import os
+import numpy as np
+from openai import OpenAI
+
+client = OpenAI(api_key="sk-proj-xxxx")
+
+def delete_file_if_exists(path):
+    if os.path.exists(path):
+        os.remove(path)
+        print(f"🗑️ Deleted existing file: {path}")
+
+def embed_openai(texts):
+    response = client.embeddings.create(model="text-embedding-3-large", input=texts)
+    return np.array([np.array(e.embedding, dtype="float32") for e in response.data])
+
+if __name__ == "__main__":
+    delete_file_if_exists("faissgpt.index")
+    delete_file_if_exists("embeddings_faissgpt.pkl")
+    with open("chunks.json", "r", encoding="utf-8") as f:
+        chunks = json.load(f)
+    print(f"🔄 Embedding {len(chunks)} chunks with OpenAI...")
+    texts = [
+        f"[SECTION: {chunk.get('section', '')}] {chunk['text']} Keywords: {', '.join(chunk.get('keywords', []))}"
+        for chunk in chunks
+    ]
+    vectors = embed_openai(texts)
+    faiss.normalize_L2(vectors)
+    index = faiss.IndexFlatL2(vectors.shape[1])
+    index.add(vectors)
+    faiss.write_index(index, "faissgpt.index")
+    with open("embeddings_faissgpt.pkl", "wb") as f:
+        pickle.dump(chunks, f)
+    print("✅ GPT FAISS index and metadata saved.")</code></pre>
+
+          <h2>İşin Eğlenceli Kısmı: OMR Backend'i</h2>
+          <p>
+            Şimdi, sizin gibi konuşabilen bir yapay zeka oluşturmaya çalışacaksınız. Yani, sizin bildiğiniz şeyleri context olarak alıp bunlara sadık kalacak ve kendi bilgisini işin içine karıştırmayacak. Ayrıca yazılarınızdaki bazı gizli anlamları çıkarabilecek ama halüsinasyona da girmeyecek. Sizin tarzınızda sizin kelimelerinizle cevap verebilecek. Bütün bunların çalışması için yapay zekaya rolünü (persona) söylemeniz, ilgili context'i vermeniz ve hangi chunk'ın soru ile ne kadar alakalı olduğu bilgisini sunmanız gerekiyor:
+          </p>
+
+          <pre><code class="language-python">from flask import Flask, request, jsonify, send_from_directory
+from openai import OpenAI
+import faiss
+import pickle
+import numpy as np
+import webbrowser
+import threading
+import os
+
+# Constants
+TOP_K = 50        # Alınacak aday chunk sayısı
+MAX_CHUNKS = 40   # GPT'ye gönderilecek maksimum chunk
+MIN_CHUNKS = 20   # Her zaman tutulacak minimum chunk
+
+# Belleği yükle
+index = faiss.read_index("faissgpt.index")
+with open("embeddings_faissgpt.pkl", "rb") as f:
+    chunks = pickle.load(f)
+
+client = OpenAI(api_key="sk-proj-xxxx")
+app = Flask(__name__)
+
+@app.route("/")
+def serve_html():
+    return send_from_directory(".", "index.html")
+
+def open_browser():
+    webbrowser.open_new("http://localhost:5000")
+
+@app.route("/ask", methods=["POST"])
+def ask():
+    data = request.get_json()
+    question = data.get("question", "")
+    if not question:
+        return jsonify({"error": "No question provided."}), 400
+
+    # 1. Adım: Soruyu İngilizceye çevir (Embedding için)
+    translation_response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {
+                "role": "system",
+                "content": "Translate the following question into English. If the question is already in English, just return it. Do not explain anything. Only return the answer."
+            },
+            {"role": "user", "content": question}
+        ]
+    )
+    translated_question = translation_response.choices[0].message.content.strip()
+
+    # 2. Adım: Soruyu embed et ve normalize et
+    embed_response = client.embeddings.create(
+        model="text-embedding-3-large",
+        input=translated_question
+    )
+    q_vector = np.array(embed_response.data[0].embedding, dtype="float32").reshape(1, -1)
+    faiss.normalize_L2(q_vector)
+
+    # 3. Adım: FAISS araması yap
+    D, I = index.search(q_vector, TOP_K)
+    scored = sorted(zip(D[0], I[0]), key=lambda x: x[0])
+    scored_with_relevance = [(1 - dist / 2, i) for dist, i in scored]
+
+    filtered = [item for item in scored_with_relevance if item[0] >= 0.25]
+    if len(filtered) < MIN_CHUNKS:
+        filtered = scored_with_relevance[:MIN_CHUNKS]
+    ranked = filtered[:MAX_CHUNKS]
+
+    # 4. Adım: Context oluştur
+    context = "\n\n".join(
+        f"[{chunks[i].get('source', '')} | relevance={relevance:.4f}]\n{chunks[i]['text']}"
+        for relevance, i in ranked
+    )
+    prompt = f"""Use only the context below to answer it. Reason precisely. Respond in English. Be accurate, structured, and specific. If the context does not support an answer, say so clearly.
+
+Context:
+{context}
+
+Question: {translated_question}
+Answer:"""
+
+    # 5. Adım: OMR rolüyle GPT'ye sor
+    chat_response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {
+                "role": "system",
+                "content": (
+                    "You are OMR. You are a retrieval-based AI assistant that only responds based on the writings of Ömer — "
+                    "a brutally honest but thoughtful thinker and software engineer who avoids fluff and corporate talk. "
+                    "Ömer's tone is blunt but kind, critical of modern systems and prefers logic and clear reasoning over emotional persuasion. "
+                    "He is helpful, he doesn't hesitate giving direct information. He tries to be like an open book. "
+                    "Never make things up. Never generalize beyond what Ömer has written in the context part of the prompt. "
+                    "Prioritize realism and Ömer’s grounded reasoning, but don’t ignore philosophical depth if it’s present in the source material. "
+                    "If the question yields to more details or other subjects, briefly hint them in the end of the answer. "
+                    "If the context allows, provide a thorough and detailed answer. Do not add anything that is not directly supported by the context. "
+                    "You can also mention at most 1 or 2 most related blog posts to read from the provided context, not more than 2 posts. "
+                    "If you don’t know the answer based on Ömer’s writings, say so clearly. "
+                    "When chunks in the context include a relevance value between 0 and 1, prefer higher values when answering. "
+                    "If the user input is not a question but a clear topic or statement, respond with Ömer’s related thoughts following the same rules. "
+                    "If nothing relevant is in the context, say so. You will always receive many context chunks: do not merely summarize or collapse them, "
+                    "and do not parrot them verbatim; instead, synthesize and explain in Ömer’s own voice, preserving important details while keeping "
+                    "the response coherent and non-repetitive. When Ömer’s wording carries hidden meaning, irony, or mockery, frame the answer so that "
+                    "the subtext is acknowledged, not just the surface meaning."
+                )
+            },
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=1000,
+        temperature=0.4
+    )
+    answer = chat_response.choices[0].message.content.strip()
+    return jsonify({"answer": answer})
+
+if __name__ == "__main__":
+    print("🔥 Starting OMR backend...")
+    if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
+        threading.Timer(2, open_browser).start()
+    app.run(debug=True, port=5000)</code></pre>
+
+          <p>
+            Ve son olarak, arayüzden backend'deki <code>/ask</code> endpoint'ini tetikleyen basit JavaScript istemcisi:
+          </p>
+
+          <pre><code class="language-javascript">try {
+  const res = await fetch("/ask", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question })
+  });
+  const data = await res.json();
+  answerDiv.innerText = data.answer;
+} catch (err) {
+  answerDiv.innerText = "Error fetching answer.";
+}</code></pre>
+
+          <p>
+            Böylece <strong>OMR</strong>, hem bağımsız olarak kendi sunucumda çalışan, hem de hiçbir harici bağımlılığa gerek duymadan benim 100 yazılık külliyatımı tıpkı benim gibi aktaran yaşayan bir dijital akıl haline geldi!
+          </p>
+
+          <div style="margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between;">
+            <a href="blog-fullstack-java-yol-haritasi.html" class="btn-theme-outline" style="color: var(--text-main); border-color: var(--border);">← Önceki: Fullstack Java Yol Haritası</a>
+            <a href="blog-yapay-zeka-yazilimcilar.html" class="btn-theme-primary">Sonraki: Yapay Zeka ve Yazılımcılar →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="dilbeste-footer" style="padding-top: 3rem;">
+    <div class="dilbeste-container footer-bottom-inner" style="border: none;">
+      <p>&copy; 2026 Ömer Faruk Balcı • <a href="index.html">omerbalci.com.tr</a></p>
+      <a href="blog.html" class="footer-cta-pill">Blog Listesine Dön</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

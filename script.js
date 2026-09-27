@@ -1,15 +1,35 @@
 /* ==========================================================================
-   Ömer Balcı - Portfolio Scripts
-   Features: Dark/Light Mode, ScrollSpy, Email Copy Tooltip, Quotes Slider
+   Ömer Balcı - Software Engineer Portfolio Scripts
+   Features: Swiper 11 Hero Slider, Theme Toggle, Mobile Navigation,
+             ScrollSpy, Floating Action Scroll-To-Top, Toast & Clipboard Copy
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // --- 1. DARK / LIGHT THEME TOGGLE ---
+  // --- 1. SWIPER HERO SLIDER INITIALIZATION ---
+  if (typeof Swiper !== 'undefined') {
+    new Swiper('.main-hero-swiper', {
+      loop: true,
+      speed: 700,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.hero-swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.hero-swiper-next',
+        prevEl: '.hero-swiper-prev',
+      },
+    });
+  }
+
+  // --- 2. DARK / LIGHT THEME TOGGLE ---
   const themeToggle = document.getElementById('themeToggle');
   const htmlRoot = document.documentElement;
 
-  // Retrieve saved theme or use system preference
   const savedTheme = localStorage.getItem('theme');
   const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -31,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 2. MOBILE MENU TOGGLE ---
+  // --- 3. MOBILE HAMBURGER MENU ---
   const mobileToggle = document.getElementById('mobileToggle');
   const navMenu = document.getElementById('navMenu');
 
@@ -40,20 +60,21 @@ document.addEventListener('DOMContentLoaded', () => {
       navMenu.classList.toggle('active');
     });
 
-    document.querySelectorAll('.nav-link').forEach(link => {
+    // Close mobile menu when clicking any nav link
+    document.querySelectorAll('.dilbeste-nav .nav-link').forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
       });
     });
   }
 
-  // --- 3. SCROLLSPY (ACTIVE NAV HIGHLIGHT) ---
-  const sections = document.querySelectorAll('section[id], footer[id]');
-  const navLinks = document.querySelectorAll('.nav-menu .nav-link:not(.btn-nav)');
+  // --- 4. SCROLLSPY (ACTIVE NAV HIGHLIGHT) ---
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.dilbeste-nav .nav-link:not(.btn-nav-cta)');
 
   function updateActiveNavLink() {
     let currentSection = '';
-    const scrollPosition = window.scrollY + 120;
+    const scrollPosition = window.scrollY + 140;
 
     sections.forEach(section => {
       const sectionTop = section.offsetTop;
@@ -73,104 +94,83 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', updateActiveNavLink, { passive: true });
 
-  // --- 4. COPY EMAIL TO CLIPBOARD WITH TOAST ---
-  const copyBtn = document.getElementById('copyEmailBtn');
-  const copyBtnMini = document.getElementById('copyEmailMini');
+  // --- 5. SCROLL TO TOP FAB BUTTON ---
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 350) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // --- 6. CLIPBOARD TOAST & EMAIL COPY ---
   const toast = document.getElementById('toastNotification');
   const toastMessage = document.getElementById('toastMessage');
-  let toastTimeout;
+  let toastTimer;
 
-  function showToast(message) {
+  function showToast(msg) {
     if (!toast) return;
-    if (toastMessage) toastMessage.textContent = message;
-    
+    if (toastMessage) toastMessage.textContent = msg;
     toast.classList.add('show');
-    clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(() => {
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
       toast.classList.remove('show');
     }, 2800);
   }
 
-  function copyEmail(email) {
+  function copyToClipboard(text) {
     if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(email).then(() => {
-        showToast(`"${email}" kopyalandı!`);
-      }).catch(() => fallbackCopy(email));
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(`"${text}" kopyalandı!`);
+      }).catch(() => fallbackCopy(text));
     } else {
-      fallbackCopy(email);
+      fallbackCopy(text);
     }
   }
 
   function fallbackCopy(text) {
-    const tempInput = document.createElement('textarea');
-    tempInput.value = text;
-    tempInput.style.position = 'fixed';
-    tempInput.style.opacity = '0';
-    document.body.appendChild(tempInput);
-    tempInput.select();
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
     try {
       document.execCommand('copy');
       showToast(`"${text}" kopyalandı!`);
-    } catch (err) {
+    } catch (e) {
       window.location.href = `mailto:${text}`;
     }
-    document.body.removeChild(tempInput);
+    document.body.removeChild(textarea);
   }
 
-  if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      const email = copyBtn.getAttribute('data-email') || 'Balci.5698@gmail.com';
-      copyEmail(email);
+  // Attach copy event to all copy email buttons
+  document.querySelectorAll('[data-email]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const email = btn.getAttribute('data-email') || 'Balci.5698@gmail.com';
+      copyToClipboard(email);
     });
-  }
+  });
 
-  if (copyBtnMini) {
-    copyBtnMini.addEventListener('click', () => {
-      copyEmail('Balci.5698@gmail.com');
-    });
-  }
-
-  // --- 5. QUOTES SLIDER / CAROUSEL ---
-  const quoteItems = document.querySelectorAll('.quote-item');
-  const prevBtn = document.getElementById('prevQuote');
-  const nextBtn = document.getElementById('nextQuote');
-  const dotsContainer = document.getElementById('quoteDots');
-  let currentQuote = 0;
-
-  if (quoteItems.length > 0 && dotsContainer) {
-    dotsContainer.innerHTML = '';
-    quoteItems.forEach((_, idx) => {
-      const dot = document.createElement('div');
-      dot.classList.add('dot');
-      if (idx === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => showQuote(idx));
-      dotsContainer.appendChild(dot);
-    });
-
-    const dots = document.querySelectorAll('.slider-dots .dot');
-
-    function showQuote(index) {
-      quoteItems.forEach(item => item.classList.remove('active'));
-      dots.forEach(dot => dot.classList.remove('active'));
-
-      currentQuote = (index + quoteItems.length) % quoteItems.length;
-      quoteItems[currentQuote].classList.add('active');
-      if (dots[currentQuote]) {
-        dots[currentQuote].classList.add('active');
+  // --- 7. SMOOTH SCROLL FOR IN-PAGE ANCHORS ---
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#' || targetId === '') return;
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        targetElement.scrollIntoView({ behavior: 'smooth' });
       }
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => showQuote(currentQuote - 1));
-    }
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => showQuote(currentQuote + 1));
-    }
-
-    // Auto slide every 7 seconds
-    setInterval(() => {
-      showQuote(currentQuote + 1);
-    }, 7000);
-  }
+    });
+  });
 
 });

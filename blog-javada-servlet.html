@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java 'da Servlet Kavramının Önemi | Ömer Faruk Balcı</title>
+  <meta name="description" content="Java web ekosisteminde Servlet mimarisi, HTTP request-response döngüsü, web konteyneri ve Spring Boot DispatcherServlet altyapısı.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="dilbeste-header" id="header">
+    <div class="dilbeste-container header-inner">
+      <a href="index.html" class="brand-box">
+        <img src="assets/images/developer-avatar.jpg" alt="Ömer Faruk Balcı" class="brand-avatar">
+        <div class="brand-text-wrap">
+          <span class="brand-name">Ömer Faruk Balcı</span>
+          <span class="brand-tag">Software Engineer • AI & BI</span>
+        </div>
+      </a>
+
+      <nav class="dilbeste-nav" id="navMenu">
+        <a href="index.html" class="nav-link">Anasayfa</a>
+        <a href="blog.html" target="_blank" rel="noopener noreferrer" class="nav-link active">Blog</a>
+        <a href="index.html#contact-section" class="nav-link btn-nav-cta">İletişim</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="mailto:balci.5698@gmail.com" class="header-mail-link d-none-sm">balci.5698@gmail.com</a>
+        
+        <button class="theme-toggle" id="themeToggle" aria-label="Temayı Değiştir">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <button class="hamburger-btn" id="mobileToggle" aria-label="Menü">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Article Container -->
+  <main class="section-padding">
+    <div class="dilbeste-container">
+      
+      <article>
+        <!-- Header -->
+        <div class="article-header">
+          <a href="blog.html" class="article-back-link">← Blog Listesine Dön</a>
+          <div class="blog-meta-tags" style="justify-content: center; margin-bottom: 1rem;">
+            <span class="blog-cat-link">📁 Java</span>
+            <span class="blog-cat-link">📁 JakartaEE</span>
+            <span class="blog-date-text">• 02 Haziran 2024</span>
+            <span class="blog-date-text">• 💬 0 Yorum</span>
+          </div>
+          <h1 class="article-main-title">Java 'da Servlet kavramının önemi</h1>
+        </div>
+
+        <!-- Content Body -->
+        <div class="article-content-body">
+          <div style="text-align: center; margin: 2rem 0 3rem;">
+            <img src="assets/images/blog-servlet.png" alt="Servlet Diagram" style="max-width: 180px; margin: 0 auto; box-shadow: var(--shadow-sm); border-radius: 8px;">
+          </div>
+
+          <p>
+            Modern Java dünyasında Spring Boot ile çalışırken sadece bir <code>@RestController</code> ve <code>@GetMapping</code> yazarak dakikalar içinde API uçları oluşturabiliyoruz. Fakat arka planda istekleri karşılayan, thread yönetimini yapan ve HTTP çevrimini yöneten asıl gücü — yani <strong>Servlet</strong> mimarisini çoğu zaman gözden kaçırıyoruz.
+          </p>
+
+          <blockquote>
+            "Spring Boot'un sihirli dünyasını gerçekten anlamak, altındaki Servlet ve Tomcat konteynerinin çalışma mekanizmasını bilmekten geçer."
+          </blockquote>
+
+          <h2>Servlet Nedir?</h2>
+          <p>
+            Servlet; istemciden (tarayıcıdan veya mobilden) gelen HTTP isteklerini alan, iş mantığını çalıştıran ve istemciye bir HTTP yanıtı (HTML, JSON, XML vb.) döndüren sunucu taraflı Java bileşenidir.
+          </p>
+
+          <h2>Servlet Yaşam Döngüsü (Life Cycle)</h2>
+          <p>
+            Bir Servlet konteyneri (örneğin Apache Tomcat) bir servlet'i şu üç temel evrede yönetir:
+          </p>
+          <ul>
+            <li><code>init()</code>: Servlet ilk kez ayağa kalkarken bir kereye mahsus çalıştırılır.</li>
+            <li><code>service()</code>: Gelen her istek için ayrı bir thread içerisinde <code>doGet()</code>, <code>doPost()</code> gibi metotları tetikler.</li>
+            <li><code>destroy()</code>: Uygulama kapatılırken kaynakların serbest bırakılması için çağrılır.</li>
+          </ul>
+
+          <h2>Spring Boot ve DispatcherServlet İlişkisi</h2>
+          <p>
+            Spring Web (Spring MVC) aslında Servlet standardı üzerine inşa edilmiş dev bir orkestrasyon motorudur. Gelen tüm HTTP istekleri öncelikle tek bir merkezi servlete düşer: <strong>DispatcherServlet</strong> (Front Controller Pattern).
+          </p>
+          <p>
+            <code>DispatcherServlet</code>, isteğin URL'ine bakarak ilgili <code>HandlerMapping</code> üzerinden doğru Controller metodunu bulur, parametreleri bağlar ve yanıtı geri döndürür.
+          </p>
+
+          <h2>Özet</h2>
+          <p>
+            Derinlemesine bir Java backend mühendisi olmak, framework'lerin arkasındaki temel protokollere ve Servlet gibi temel yapı taşlarına hakim olmayı gerektirir.
+          </p>
+
+          <div style="margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between;">
+            <a href="blog-springboot-blog.html" class="btn-theme-outline" style="color: var(--text-main); border-color: var(--border);">← Önceki: Spring Boot ile Blog Sitesi</a>
+            <a href="blog.html" class="btn-theme-primary">Tüm Blog Yazıları →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="dilbeste-footer" style="padding-top: 3rem;">
+    <div class="dilbeste-container footer-bottom-inner" style="border: none;">
+      <p>&copy; 2026 Ömer Faruk Balcı • <a href="index.html">omerbalci.com.tr</a></p>
+      <a href="blog.html" class="footer-cta-pill">Blog Listesine Dön</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
