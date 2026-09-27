@@ -1,40 +1,62 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ömer Balcı | Kişisel Web Sayfası</title>
-  <meta name="description" content="Ömer Balcı'nın kişisel web sayfası. Projeler, yazılar ve düşünceler.">
-  <meta property="og:title" content="Ömer Balcı | Kişisel Web Sayfası">
-  <meta property="og:description" content="Yazılım, teknoloji, projeler ve düşünceler.">
+  <title>Ömer Balcı | Yazılım Geliştirici</title>
+  <meta name="description" content="Ömer Balcı - Java, Spring Boot, Angular ve Dağıtık Sistemler Odaklı Yazılım Geliştirici Kişisel Portföyü.">
+  <meta property="og:title" content="Ömer Balcı | Yazılım Geliştirici">
+  <meta property="og:description" content="Java, Spring Boot, PostgreSQL, RabbitMQ ve modern web teknolojileri ile geliştirilen projeler ve deneyimler.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://omerbalci.com.tr">
 
-  <!-- Google Fonts: Barlow & Playfair Display -->
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- Navigation -->
-  <header class="header">
+  <header class="header" id="header">
     <div class="container nav-container">
       <a href="#" class="brand-logo">Ömer Balcı</a>
+      
       <nav class="nav-menu" id="navMenu">
-        <a href="#about" class="nav-link">Haewqkkımda</a>
+        <a href="#about" class="nav-link active">Hakkımda</a>
+        <a href="#skills" class="nav-link">Yetkinlikler</a>
+        <a href="#works" class="nav-link">Projeler</a>
         <a href="#philosophy" class="nav-link">Yaklaşım</a>
-        <a href="#works" class="nav-link">Çalışmalar</a>
-        <a href="#inspiration" class="nav-link">İlham</a>
         <a href="#contact" class="nav-link btn-nav">İletişim</a>
       </nav>
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Menüyü Aç/Kapat">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+
+      <div class="nav-right">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Temayı Değiştir" title="Karanlık / Aydınlık Mod">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Menüyü Aç/Kapat">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -42,53 +64,129 @@
   <section class="hero-section" id="about">
     <div class="container hero-grid">
       <div class="hero-text-col">
-        <span class="eyebrow">Kişisel Portföy & Günlük</span>
-        <h1 class="hero-title">Myself,</h1>
+        <div class="hero-badge-wrap">
+          <span class="status-indicator">
+            <span class="status-pulse"></span>
+            Yazılım Geliştirici & Backend Odaklı
+          </span>
+        </div>
+        <h1 class="hero-title">Ölçeklenebilir, güvenli ve performanslı sistemler geliştiriyorum.</h1>
         <p class="hero-intro">
-          Merhaba, ben <strong>Ömer Balcı</strong>. Teknoloji, yazılım mimarileri ve problem çözme tutkusuyla çalışan bir geliştiriciyim. Fikirleri somut, sade ve kullanıcı odaklı çözümlere dönüştürmekten keyif alıyorum.
+          Merhaba, ben <strong>Ömer Balcı</strong>. Başta <strong>Java, Spring Boot</strong> ekosistemi ve kurumsal backend mimarileri olmak üzere; veri tabanı tasarımı, asenkron mesajlaşma ve modern web çözümleri üzerine odaklanıyorum.
         </p>
         <p class="hero-subtext">
-          Sürekli öğrenmeyi, dijital dünyada yeni şeyler inşa etmeyi ve analitik yaklaşımla değer üretmeyi seviyorum. Burada projelerimi, düşüncelerimi ve odaklandığım alanları keşfedebilirsiniz.
+          Temiz kod prensipleri (Clean Code), SOLID standartları ve katmanlı mimarilerle sürdürülebilir yazılımlar inşa etmeyi amaçlıyorum.
         </p>
         <div class="hero-actions">
-          <a href="#works" class="btn btn-primary">Çalışmalarımı İncele</a>
-          <a href="#contact" class="btn btn-outline">İletişime Geç</a>
+          <a href="#works" class="btn btn-primary">
+            <span>Projelerimi İncele</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <button class="btn btn-outline" id="copyEmailBtn" data-email="Balci.5698@gmail.com" title="E-postayı panoya kopyala">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span class="btn-text">E-postayı Kopyala</span>
+          </button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">30+</span>
+            <span class="stat-label">GitHub Deposu</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">Core Backend</span>
+            <span class="stat-label">Java & Spring Boot</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">Full-Stack</span>
+            <span class="stat-label">Angular & TypeScript</span>
+          </div>
         </div>
       </div>
+
       <div class="hero-image-col">
         <div class="image-frame">
-          <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop" alt="Ömer Balcı - Çalışma Alanı" class="hero-img">
-          <div class="badge-status">
-            <span class="status-dot"></span>
-            <span>Yeni Projeler Geliştiriyor</span>
+          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&auto=format&fit=crop" alt="Yazılım Geliştirme Alanı" class="hero-img">
+          <div class="code-floating-card">
+            <div class="code-card-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="code-card-title">DeveloperProfile.java</span>
+            </div>
+            <pre class="code-snippet"><code><span class="code-annotation">@Service</span>
+<span class="code-keyword">public class</span> <span class="code-class">OmerBalci</span> {
+  <span class="code-keyword">private final</span> <span class="code-type">String</span> role = <span class="code-str">"Software Engineer"</span>;
+  <span class="code-keyword">private final</span> <span class="code-type">String[]</span> stack = {
+    <span class="code-str">"Spring Boot"</span>, <span class="code-str">"PostgreSQL"</span>, 
+    <span class="code-str">"RabbitMQ"</span>, <span class="code-str">"Angular"</span>
+  };
+}</code></pre>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Philosophy Section -->
-  <section class="section philosophy-section" id="philosophy">
+  <!-- Skills & Tech Stack Section -->
+  <section class="section skills-section" id="skills">
     <div class="container">
-      <div class="quote-header">
-        <span class="section-tag">Odak Noktası</span>
-        <h2 class="section-heading">"Üretmek, zihni dinlendirir ve geleceği şekillendirir."</h2>
+      <div class="section-top text-center">
+        <span class="section-tag">Teknoloji Yığını</span>
+        <h2 class="section-heading">Uzmanlık & Yetkinlikler</h2>
+        <p class="section-subtitle">Geliştirme süreçlerimde aktif olarak kullandığım diller, mimariler ve araçlar.</p>
       </div>
-      <div class="philosophy-grid">
-        <div class="philosophy-card">
-          <div class="card-icon">⚡</div>
-          <h3>Sadelik ve Verimlilik</h3>
-          <p>Karmaşık problemleri en yalın ve anlaşılır parçalara bölerek çözmeyi ilke ediniyorum. Temiz kod ve sürdürülebilir mimariler önceliğimdir.</p>
+
+      <div class="skills-grid">
+        <!-- Backend & Frameworks -->
+        <div class="skill-category-card">
+          <div class="cat-icon-wrap backend-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 19h8"/></svg>
+          </div>
+          <h3 class="cat-title">Backend & Mimariler</h3>
+          <p class="cat-desc">Yüksek verimli kurumsal servisler, güvenli kimlik doğrulama ve RESTful mimariler.</p>
+          <div class="skills-badges">
+            <span class="tech-badge">Java</span>
+            <span class="tech-badge">Spring Boot</span>
+            <span class="tech-badge">Spring Security</span>
+            <span class="tech-badge">Spring Framework</span>
+            <span class="tech-badge">JDBC & JPA</span>
+            <span class="tech-badge">C# (.NET)</span>
+          </div>
         </div>
-        <div class="philosophy-card">
-          <div class="card-icon">🎯</div>
-          <h3>Çözüm Odaklılık</h3>
-          <p>Sadece teknoloji kullanmak için değil; gerçek dünyadaki bir ihtiyacı gidermek, iş süreçlerini hızlandırmak ve değer yaratmak için geliştiriyorum.</p>
+
+        <!-- Databases & Distributed -->
+        <div class="skill-category-card">
+          <div class="cat-icon-wrap db-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+          </div>
+          <h3 class="cat-title">Veritabanı & Dağıtık Sistemler</h3>
+          <p class="cat-desc">İlişkisel veritabanı optimizasyonu, asenkron mesajlaşma ve arama altyapıları.</p>
+          <div class="skills-badges">
+            <span class="tech-badge">PostgreSQL</span>
+            <span class="tech-badge">Oracle SQL</span>
+            <span class="tech-badge">Elasticsearch</span>
+            <span class="tech-badge">RabbitMQ</span>
+            <span class="tech-badge">Katmanlı Mimari (N-Tier)</span>
+          </div>
         </div>
-        <div class="philosophy-card">
-          <div class="card-icon">🌱</div>
-          <h3>Sürekli Gelişim</h3>
-          <p>Teknoloji durağan değil; her yeni gün yeni bir kütüphane, yaklaşım ve bakış açısı sunuyor. Merakımı canlı tutarak kendimi geliştiriyorum.</p>
+
+        <!-- Frontend & Web -->
+        <div class="skill-category-card">
+          <div class="cat-icon-wrap frontend-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </div>
+          <h3 class="cat-title">Frontend & Web</h3>
+          <p class="cat-desc">Dinamik, responsive ve kullanıcı deneyimi odaklı modern tek sayfa (SPA) uygulamaları.</p>
+          <div class="skills-badges">
+            <span class="tech-badge">TypeScript</span>
+            <span class="tech-badge">Angular</span>
+            <span class="tech-badge">JavaScript (ES6+)</span>
+            <span class="tech-badge">HTML5 / CSS3</span>
+            <span class="tech-badge">Responsive UI</span>
+          </div>
         </div>
       </div>
     </div>
@@ -100,107 +198,125 @@
       <div class="section-top">
         <div>
           <span class="section-tag">Portföy</span>
-          <h2 class="section-heading">Neler Üretiyorum?</h2>
+          <h2 class="section-heading">Öne Çıkan Projeler</h2>
         </div>
-        <p class="section-subtitle">Yazılım projeleri, sistem entegrasyonları ve geliştirdiğim çözümlerden bazı örnekler.</p>
+        <p class="section-subtitle">Geliştirdiğim yazılım mimarileri, yönetim platformları ve açık kaynak depolarım.</p>
       </div>
 
       <div class="works-grid">
+        <!-- Project 1 -->
         <article class="work-card">
           <div class="work-image-wrap">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Veri ve Raporlama Platformu">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Car Service Manager">
+            <span class="work-badge-floating">Full-Stack</span>
+          </div>
+          <div class="work-info">
+            <span class="work-category">Yönetim & Servis Paneli</span>
+            <h3 class="work-title">Car Service Manager</h3>
+            <p class="work-desc">Araç bakım süreçlerini, yedek parça envanterini ve servis randevularını modüler bir yapıda takip etmeyi sağlayan yönetim uygulaması.</p>
+            <div class="work-tags">
+              <span>TypeScript</span>
+              <span>Angular</span>
+              <span>REST API</span>
+              <span>Tailwind/CSS</span>
+            </div>
+            <div class="work-links">
+              <a href="https://github.com/omerbalcii/carservicemanager" target="_blank" rel="noopener noreferrer" class="work-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>GitHub Deposunu Aç</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="work-card">
+          <div class="work-image-wrap">
+            <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=800&auto=format&fit=crop" alt="Katmanlı Mimari Kütüphane Otomasyonu">
+            <span class="work-badge-floating">Katmanlı Mimari</span>
+          </div>
+          <div class="work-info">
+            <span class="work-category">Kurumsal Sistem Tasarımı</span>
+            <h3 class="work-title">Kütüphane Otomasyonu</h3>
+            <p class="work-desc">N-Tier (Katmanlı Mimari) deseni temel alınarak geliştirilmiş; iş mantığı (BLL), veri erişim (DAL) ve sunum katmanlarını izole eden kurumsal otomasyon projesi.</p>
+            <div class="work-tags">
+              <span>C# (.NET)</span>
+              <span>N-Tier Architecture</span>
+              <span>Entity Framework</span>
+              <span>SQL</span>
+            </div>
+            <div class="work-links">
+              <a href="https://github.com/omerbalcii/Katmanli-mimari-kutuphaneOtomasyonu" target="_blank" rel="noopener noreferrer" class="work-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>GitHub Deposunu Aç</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="work-card">
+          <div class="work-image-wrap">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop" alt="BLL Java & Veritabanı Mimarisi">
+            <span class="work-badge-floating">Core Backend</span>
           </div>
           <div class="work-info">
             <span class="work-category">Backend & Veri Mimarisi</span>
-            <h3 class="work-title">Raporlama ve Analitik Servisleri</h3>
-            <p class="work-desc">Büyük ölçekli verileri işleyen, yüksek performanslı sorgularla anlık raporlar ve paneller sunan uçtan uca altyapı tasarımı.</p>
+            <h3 class="work-title">BLL Kurumsal İş Katmanı & SQL</h3>
+            <p class="work-desc">Java EE ve Spring standartlarında iş katmanı (BLL) kurgusu; Oracle SQL ile ilişkisel veritabanı prosedürleri ve güvenli veri akışları.</p>
             <div class="work-tags">
               <span>Java</span>
-              <span>Spring Boot</span>
-              <span>PostgreSQL</span>
+              <span>Spring Framework</span>
+              <span>Oracle SQL</span>
+              <span>JDBC</span>
             </div>
-          </div>
-        </article>
-
-        <article class="work-card">
-          <div class="work-image-wrap">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="Web Arayüz Geliştirme">
-          </div>
-          <div class="work-info">
-            <span class="work-category">Frontend & UI/UX</span>
-            <h3 class="work-title">Modern Web Uygulama Arayüzleri</h3>
-            <p class="work-desc">Kullanıcı dostu, hızlı ve responsive modern gösterge panelleri (dashboard) ve interaktif kullanıcı deneyimleri.</p>
-            <div class="work-tags">
-              <span>React</span>
-              <span>TypeScript</span>
-              <span>REST API</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="work-card">
-          <div class="work-image-wrap">
-            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" alt="Sistem & Entegrasyon">
-          </div>
-          <div class="work-info">
-            <span class="work-category">Sistem Mimarisi</span>
-            <h3 class="work-title">Otomasyon ve Entegrasyon Çözümleri</h3>
-            <p class="work-desc">Farklı servisler arası iletişimi sağlayan mikroservis mimarileri ve iş akışlarını otomatikleştiren güvenli API kurguları.</p>
-            <div class="work-tags">
-              <span>Docker</span>
-              <span>CI/CD</span>
-              <span>Microservices</span>
+            <div class="work-links">
+              <a href="https://github.com/omerbalcii/BLL-JAVA" target="_blank" rel="noopener noreferrer" class="work-link-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>GitHub Deposunu Aç</span>
+              </a>
             </div>
           </div>
         </article>
       </div>
+
+      <div class="works-footer-cta">
+        <a href="https://github.com/omerbalcii?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>Tüm Projelerimi GitHub'da İnceleyin (30+)</span>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Inspiration Section -->
-  <section class="section inspiration-section" id="inspiration">
+  <!-- Philosophy & Principles Section -->
+  <section class="section philosophy-section" id="philosophy">
     <div class="container">
-      <div class="section-top text-center">
-        <span class="section-tag">Bakış Açısı</span>
-        <h2 class="section-heading">Bana İlham Verenler</h2>
-        <p class="section-subtitle">Üretkenliğimi ve vizyonumu besleyen temel unsurlar.</p>
+      <div class="quote-header text-center">
+        <span class="section-tag">Mühendislik İlkeleri</span>
+        <h2 class="section-heading">"Yalın kod, uzun ömürlü ve sağlam mimariler üretir."</h2>
       </div>
-
-      <div class="inspiration-grid">
-        <div class="inspiration-card">
-          <div class="insp-img-wrap">
-            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop" alt="Teknoloji">
-          </div>
-          <div class="insp-content">
-            <h3>Teknoloji & Kod</h3>
-            <p>Birkaç satır kodun karmaşık bir sistemi kusursuz bir ritimle çalıştırması ve insanların hayatını kolaylaştırması.</p>
-          </div>
+      <div class="philosophy-grid">
+        <div class="philosophy-card">
+          <div class="card-icon">⚡</div>
+          <h3>Sadelik ve Performans</h3>
+          <p>Gereksiz soyutlamalardan kaçınarak, sistem kaynaklarını en verimli kullanan, kolay okunabilir ve test edilebilir mimariler kuruyorum.</p>
         </div>
-
-        <div class="inspiration-card">
-          <div class="insp-img-wrap">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600&auto=format&fit=crop" alt="Doğa">
-          </div>
-          <div class="insp-content">
-            <h3>Doğa & Sadeliğin Dengesi</h3>
-            <p>Doğadaki kusursuz matematik ve huzur. Ekrandan uzaklaşıp doğayla temas etmek zihni tazeleyen en büyük güçtür.</p>
-          </div>
+        <div class="philosophy-card">
+          <div class="card-icon">🛡️</div>
+          <h3>Güvenlik ve Dayanıklılık</h3>
+          <p>Spring Security ve güvenli kodlama pratikleriyle veriyi koruyan, hata toleransı yüksek (fault-tolerant) servisler tasarlıyorum.</p>
         </div>
-
-        <div class="inspiration-card">
-          <div class="insp-img-wrap">
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop" alt="İnsan ve Fikirler">
-          </div>
-          <div class="insp-content">
-            <h3>İnsan Hikayeleri & Fikirler</h3>
-            <p>Farklı vizyona sahip insanlarla sohbet etmek, onların deneyimlerinden beslenmek ve yeni fikirler etrafında buluşmak.</p>
-          </div>
+        <div class="philosophy-card">
+          <div class="card-icon">🚀</div>
+          <h3>Sürekli Öğrenme</h3>
+          <p>Dağıtık mimariler, mikroservisler ve bulut teknolojilerini yakından takip ederek her projede güncel mühendislik standartlarını uyguluyorum.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Quotes / Testimonials Carousel Section -->
+  <!-- Quotes Carousel Section -->
   <section class="section quotes-section">
     <div class="container">
       <div class="quote-slider-box">
@@ -213,8 +329,8 @@
           <span class="quote-author">— Harold Abelson</span>
         </div>
         <div class="quote-item">
-          <p class="quote-text">"Karmaşıklığı yönetmenin tek yolu, onu küçük ve zarif parçalara dönüştürmektir."</p>
-          <span class="quote-author">— Kişisel İlke</span>
+          <p class="quote-text">"Karmaşıklığı yönetmenin tek yolu, onu küçük, anlaşılır ve zarif parçalara dönüştürmektir."</p>
+          <span class="quote-author">— Mühendislik İlkesi</span>
         </div>
 
         <div class="slider-controls">
@@ -232,12 +348,18 @@
       <div class="footer-top">
         <div class="footer-brand">
           <h2 class="footer-logo">Ömer Balcı</h2>
-          <p class="footer-tagline">Fikirleriniz, projeleriniz veya sadece bir merhaba demek için dilediğiniz zaman iletişime geçebilirsiniz.</p>
-          <a href="mailto:Balci.5698@gmail.com" class="footer-email">Balci.5698@gmail.com</a>
+          <p class="footer-tagline">Yeni bir proje, iş birliği veya sadece bir merhaba demek için dilediğiniz an iletişime geçebilirsiniz.</p>
+          
+          <div class="email-copy-box">
+            <span class="email-text">Balci.5698@gmail.com</span>
+            <button class="btn-copy-mini" id="copyEmailMini" title="E-postayı Kopyala">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+          </div>
         </div>
         
         <div class="footer-social-section">
-          <h4 class="social-heading">Bağlantılar</h4>
+          <h4 class="social-heading">Bağlantılarım</h4>
           <div class="social-links">
             <a href="https://github.com/omerbalcii" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -252,11 +374,17 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Ömer Balcı • <a href="https://omerbalci.com.tr">omerbalci.com.tr</a>. Tüm hakları saklıdır.</p>
-        <p class="footer-meta">Minimalist & Zarif Tasarım</p>
+        <p>&copy; 2026 Ömer Balcı • <a href="https://omerbalci.com.tr">omerbalci.com.tr</a></p>
+        <p class="footer-meta">Java & Full-Stack Geliştirici</p>
       </div>
     </div>
   </footer>
+
+  <!-- Notification Toast Container -->
+  <div class="toast-notification" id="toastNotification">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="toastMessage">E-posta adresi panoya kopyalandı!</span>
+  </div>
 
   <script src="script.js"></script>
 </body>
