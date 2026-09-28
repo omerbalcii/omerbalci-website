@@ -2171,47 +2171,74 @@ button {
   }
 
   .hero-slide {
-    align-items: flex-end;
+    display: flex;
+    align-items: stretch;
+  }
+
+  .hero-slide .dilbeste-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 
   .hero-slide[style*="omer-teknopark"] {
-    background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.08) 0%, rgba(15, 23, 42, 0.3) 30%, rgba(15, 23, 42, 0.85) 60%, rgba(15, 23, 42, 0.98) 100%), url('assets/images/omer-teknopark.jpg') !important;
+    background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 0%, rgba(15, 23, 42, 0.2) 35%, rgba(15, 23, 42, 0.85) 65%, rgba(15, 23, 42, 0.98) 100%), url('assets/images/omer-teknopark.jpg') !important;
     background-position: 54% 8% !important;
   }
 
   .hero-slide[style*="iski-building"] {
-    background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.15) 0%, rgba(15, 23, 42, 0.4) 30%, rgba(15, 23, 42, 0.88) 60%, rgba(15, 23, 42, 0.98) 100%), url('assets/images/iski-building.jpg') !important;
+    background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.3) 35%, rgba(15, 23, 42, 0.85) 65%, rgba(15, 23, 42, 0.98) 100%), url('assets/images/iski-building.jpg') !important;
     background-position: center 25% !important;
   }
 
   .hero-slide[style*="workspace-nature"] {
-    background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.15) 0%, rgba(15, 23, 42, 0.4) 30%, rgba(15, 23, 42, 0.88) 60%, rgba(15, 23, 42, 0.98) 100%), url('assets/images/workspace-nature.jpg') !important;
+    background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.3) 35%, rgba(15, 23, 42, 0.85) 65%, rgba(15, 23, 42, 0.98) 100%), url('assets/images/workspace-nature.jpg') !important;
   }
 
   .slide-content-center {
-    padding: 0 0 3.75rem 0;
+    padding: 0 0 3.2rem 0;
+    margin-top: auto;
   }
 
   .slide-tag {
-    font-size: 0.72rem;
-    padding: 0.35rem 0.75rem;
-    margin-bottom: 0.5rem;
+    font-size: 0.68rem;
+    padding: 0.3rem 0.7rem;
+    margin-bottom: 0.4rem;
   }
 
   .slide-title {
-    font-size: 1.65rem;
+    font-size: 1.45rem;
     line-height: 1.25;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
   }
 
   .slide-desc {
-    font-size: 0.88rem;
-    line-height: 1.55;
-    margin-bottom: 1.25rem;
+    font-size: 0.84rem;
+    line-height: 1.45;
+    margin-bottom: 1rem;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  .slide-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .slide-buttons .btn-theme-primary,
+  .slide-buttons .btn-theme-outline {
+    flex: 1 1 0;
+    text-align: center;
+    padding: 0.7rem 0.5rem;
+    font-size: 0.82rem;
+    white-space: nowrap;
+    justify-content: center;
+    border-radius: var(--radius-sm);
   }
 
   /* Hide huge swiper navigation arrows on mobile to prevent blocking face/text */
@@ -2221,7 +2248,7 @@ button {
   }
 
   .hero-swiper-pagination {
-    bottom: 12px !important;
+    bottom: 10px !important;
   }
 
   .section-big-title {
