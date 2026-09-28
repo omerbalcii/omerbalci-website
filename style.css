@@ -466,7 +466,7 @@ button {
   align-items: center;
 }
 
-.hero-slide[style*="iski-building"] {
+.hero-slide[style*="kamu-building"] {
   background-position: center 38%;
 }
 
@@ -1061,7 +1061,7 @@ button {
   transition: transform 0.5s ease;
 }
 
-.project-img-wrap img[src*="iski-building"] {
+.project-img-wrap img[src*="kamu-building"] {
   object-position: center 38%;
 }
 
@@ -1240,7 +1240,7 @@ button {
   object-position: center top;
 }
 
-.moment-photo-box img[src*="iski-building"] {
+.moment-photo-box img[src*="kamu-building"] {
   object-position: center 38%;
 }
 
@@ -2187,8 +2187,8 @@ button {
     background-position: 54% 8% !important;
   }
 
-  .hero-slide[style*="iski-building"] {
-    background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.3) 35%, rgba(15, 23, 42, 0.85) 65%, rgba(15, 23, 42, 0.98) 100%), url('assets/images/iski-building.jpg') !important;
+  .hero-slide[style*="kamu-building"] {
+    background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.3) 35%, rgba(15, 23, 42, 0.85) 65%, rgba(15, 23, 42, 0.98) 100%), url('assets/images/kamu-building.jpg') !important;
     background-position: center 25% !important;
   }
 
