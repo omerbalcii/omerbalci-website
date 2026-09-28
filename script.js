@@ -173,4 +173,57 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // --- 8. VIDEO LIGHTBOX / MODAL CONTROLLER ---
+  const videoModal = document.getElementById('videoModal');
+  const portfolioVideo = document.getElementById('portfolioVideo');
+  const closeVideoModal = document.getElementById('closeVideoModal');
+  const videoTriggers = document.querySelectorAll('.trigger-video-modal, #playAboutVideoBtn, .moment-video-trigger-btn');
+
+  function openVideoModal() {
+    if (!videoModal) return;
+    videoModal.classList.add('active');
+    videoModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (portfolioVideo) {
+      portfolioVideo.currentTime = 0;
+      portfolioVideo.play().catch(() => {});
+    }
+  }
+
+  function closeVideoModalHandler() {
+    if (!videoModal) return;
+    videoModal.classList.remove('active');
+    videoModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (portfolioVideo) {
+      portfolioVideo.pause();
+    }
+  }
+
+  videoTriggers.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openVideoModal();
+    });
+  });
+
+  if (closeVideoModal) {
+    closeVideoModal.addEventListener('click', closeVideoModalHandler);
+  }
+
+  if (videoModal) {
+    videoModal.addEventListener('click', (e) => {
+      if (e.target === videoModal) {
+        closeVideoModalHandler();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && videoModal && videoModal.classList.contains('active')) {
+      closeVideoModalHandler();
+    }
+  });
+
 });
