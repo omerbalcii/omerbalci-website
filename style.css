@@ -172,6 +172,79 @@ button {
   border: 2px solid var(--accent);
 }
 
+.brand-monogram {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(56, 189, 248, 0.18) 100%);
+  border: 1.5px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+[data-theme="dark"] .brand-monogram {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.22) 0%, rgba(15, 23, 42, 0.85) 100%);
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 2px 12px rgba(56, 189, 248, 0.2);
+}
+
+.brand-monogram .monogram-text,
+.brand-monogram .monogram-code {
+  position: absolute;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  line-height: 1;
+}
+
+.brand-monogram .monogram-text {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.12rem;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-theme="dark"] .brand-monogram .monogram-text {
+  color: #38bdf8;
+}
+
+.brand-monogram .monogram-code {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #2563eb;
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+[data-theme="dark"] .brand-monogram .monogram-code {
+  color: #38bdf8;
+}
+
+.brand-box:hover .brand-monogram {
+  transform: scale(1.06);
+  border-color: var(--accent-hover);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+}
+
+.brand-box:hover .monogram-text {
+  opacity: 0;
+  transform: translateY(-14px);
+}
+
+.brand-box:hover .monogram-code {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .brand-text-wrap {
   display: flex;
   flex-direction: column;
@@ -1448,6 +1521,34 @@ button {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--accent);
+}
+
+.footer-monogram {
+  width: 46px;
+  height: 46px;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.footer-monogram .monogram-text,
+.footer-monogram .monogram-code {
+  color: #ffffff;
+}
+
+.footer-brand-header:hover .footer-monogram {
+  transform: scale(1.06);
+  border-color: #38bdf8;
+}
+
+.footer-brand-header:hover .footer-monogram .monogram-text {
+  opacity: 0;
+  transform: translateY(-14px);
+}
+
+.footer-brand-header:hover .footer-monogram .monogram-code {
+  opacity: 1;
+  transform: translateY(0);
+  color: #38bdf8;
 }
 
 .footer-name {
