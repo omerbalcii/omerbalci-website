@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kurumsal Veride RAG ve Vektör Arama Mimarisi | Ömer Faruk Balcı</title>
+  <meta name="description" content="Büyük dil modellerini (LLM) kurumsal verilerle buluşturan RAG mimarisi, chunking stratejileri, embedding vektörleri ve semantik arama mekanizmaları.">
+  <meta property="og:title" content="Kurumsal Veride RAG ve Vektör Arama Mimarisi | Ömer Faruk Balcı">
+  <meta property="og:description" content="Halüsinasyonu önleyen, kurumsal veri gizliliğini koruyan RAG mimarisi, vektör veritabanları ve hibrit arama mühendisliği.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://omerbalci.com.tr/blog/kurumsal-sistemlerde-rag-ve-vektor-arama-mimarisi.html">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="dilbeste-header" id="header">
+    <div class="dilbeste-container header-inner">
+      <a href="../index.html" class="brand-box">
+        <img src="../assets/images/omer-avatar.jpg" alt="Ömer Faruk Balcı" class="brand-avatar">
+        <div class="brand-text-wrap">
+          <span class="brand-name">Ömer Faruk Balcı</span>
+          <span class="brand-tag">Software Engineer • AI & BI</span>
+        </div>
+      </a>
+
+      <nav class="dilbeste-nav" id="navMenu">
+        <a href="../index.html#hero-slider" class="nav-link">Anasayfa</a>
+        <a href="../index.html#about-section" class="nav-link">Hakkımda</a>
+        <a href="../index.html#services-banners" class="nav-link">Uzmanlık</a>
+        <a href="../index.html#experience-section" class="nav-link">Deneyim</a>
+        <a href="../index.html#projects-section" class="nav-link">Projeler</a>
+        <a href="index.html" class="nav-link active">Blog</a>
+        <a href="../index.html#contact-section" class="nav-link btn-nav-cta">İletişim</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="mailto:balci.5698@gmail.com" class="header-mail-link d-none-sm">balci.5698@gmail.com</a>
+        
+        <button class="theme-toggle" id="themeToggle" aria-label="Temayı Değiştir" title="Karanlık / Aydınlık Mod">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <button class="hamburger-btn" id="mobileToggle" aria-label="Menü">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Article Container -->
+  <main class="section-padding">
+    <div class="dilbeste-container">
+      
+      <article>
+        <!-- Header -->
+        <div class="article-header">
+          <a href="index.html" class="article-back-link">← Blog Listesine Dön</a>
+          <div class="blog-meta-tags" style="justify-content: center; margin-bottom: 1rem;">
+            <span class="blog-cat-link">📁 Yapay Zekâ</span>
+            <span class="blog-cat-link">📁 RAG</span>
+            <span class="blog-cat-link">📁 Vektör Veritabanı</span>
+            <span class="blog-cat-link">📁 Sistem Mimarisi</span>
+            <span class="blog-date-text">• 12 Eylül 2025</span>
+            <span class="blog-date-text">• ⏱️ 9 Dk Okuma</span>
+          </div>
+          <h1 class="article-main-title">Kurumsal Veride RAG (Retrieval-Augmented Generation) ve Vektör Arama Mimarisi</h1>
+        </div>
+
+        <!-- Content Body -->
+        <div class="article-content-body">
+          <div style="text-align: center; margin: 2rem 0 3rem;">
+            <img src="../assets/images/blog-rag.png" alt="RAG ve Vektör Veritabanı Mimarisi" style="width: 140px; height: 140px; border-radius: 50%; margin: 0 auto; box-shadow: var(--shadow-md);">
+          </div>
+
+          <p>
+            Büyük Dil Modelleri (LLM), genel dünya bilgisi ve dil anlama konusunda devrim yarattı. Ancak kurumsal seviyede bir şirketin iç süreçlerini, teknik dokümantasyonunu veya veritabanı kayıtlarını sorgulamak istediğimizde büyük bir çıkmazla karşılaşırız: <strong>Eğitim verisinde kurumunuzun özel verisi yoktur</strong> ve model bilmediği konularda uydurma (halüsinasyon) yanıtlar üretmeye son derece yatkındır.
+          </p>
+          <p>
+            Modelleri sıfırdan eğitmek veya sürekli <em>Fine-Tuning</em> yapmak hem astronomik maliyetlidir hem de sürekli güncellenen dinamik verilere ayak uyduramaz. İşte bu noktada modern yapay zekâ mühendisliğinin en kritik omurgası devreye girer: <strong>RAG (Retrieval-Augmented Generation)</strong>.
+          </p>
+
+          <blockquote>
+            "RAG, bir yapay zekâyı ezberci bir öğrenciden, sınava kütüphanesindeki en doğru referans kitaplarla giren bir araştırmacıya dönüştürür."
+          </blockquote>
+
+          <h2>1. RAG Mimarisinin Çalışma Prensibi</h2>
+          <p>
+            RAG sistemleri temelde iki bağımsız ama senkronize fazdan oluşur:
+          </p>
+          <ol style="margin-left: 1.5rem; margin-bottom: 2rem; line-height: 1.8;">
+            <li><strong>İndeksleme (Indexing / Offline Fazı):</strong> Kurumsal belgeler (PDF, Word, Markdown, SQL tabloları) okunur, mantıksal parçalara (chunk) bölünür, bir embedding modeliyle yüksek boyutlu vektörlere dönüştürülür ve vektör veritabanına indekslenir.</li>
+            <li><strong>Sorgulama ve Üretim (Retrieval & Generation / Online Fazı):</strong> Kullanıcı bir soru sorduğunda, bu soru da aynı embedding modeliyle vektöre dönüştürülür. Vektör veritabanında matematiksel kosinüs benzerliği (Cosine Similarity) ile en yakın belge parçaları bulunur. Bulunan bu parçalar "Context" olarak LLM prompt'una eklenir ve modelden yalnızca bu bağlama dayanarak yanıt üretmesi istenir.</li>
+          </ol>
+
+          <h2>2. Kritik Aşama: Chunking (Anlamsal Parçalama) Stratejileri</h2>
+          <p>
+            Birçok RAG projesinin başarısız olmasının bir numaralı nedeni kötü parçalama stratejileridir. Bir belgenin tamamını tek seferde modele veremezsiniz; ancak çok küçük parçalara bölerseniz de cümlenin bağlamı (context) kaybolur.
+          </p>
+          <ul>
+            <li><strong>Recursive Character Chunking:</strong> Metni önce paragraflara, sonra cümlelere, en son kelimelere göre hiyerarşik böler. Tipik olarak 500-1000 karakterlik bloklar ve %10-15 örtüşme (overlap) kullanılır.</li>
+            <li><strong>Belgeye Özgü (Markdown / Section) Chunking:</strong> Başlık etiketlerini (H1, H2, H3) baz alarak parçalama yapar. Böylece bir konunun altındaki açıklamalar diğer konularla karışmaz.</li>
+            <li><strong>Metadata Zenginleştirme:</strong> Her parçanın üzerine dosya adı, kategori, yetki seviyesi ve güncelleme tarihi gibi metaveriler eklenerek filtrelenebilir hibrit arama altyapısı kurulur.</li>
+          </ul>
+
+          <div style="background: var(--bg-surface); padding: 1.5rem 1.8rem; border-radius: var(--radius-md); border-left: 4px solid var(--accent); margin: 2rem 0;">
+            <strong style="color: var(--text-heading); font-size: 1.05rem;">Chunking İçin Örnek Python Mantığı:</strong>
+            <pre style="margin-top: 1rem;"><code>from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size=600,
+    chunk_overlap=80,
+    separators=["\n\n", "\n", ". ", " "]
+)
+chunks = text_splitter.split_text(corporate_policy_document)</code></pre>
+          </div>
+
+          <h2>3. Vektör Veritabanları ve Semantik Arama</h2>
+          <p>
+            Metin parçaları embedding modelleri (örneğin <code>text-embedding-3-small</code> veya açık kaynak <code>bge-m3</code>) aracılığıyla 1536 veya 1024 boyutlu sayı dizilerine dönüştürülür. Bu vektörler uzayda kelimelerin anlamsal yakınlığını temsil eder:
+          </p>
+          <ul>
+            <li><strong>PostgreSQL + pgvector:</strong> Eğer zaten kurumsal sisteminizde PostgreSQL kullanıyorsanız, ekstra bir veritabanı cluster'ı kurmadan ACID garantisiyle vektör aramasını doğrudan ilişkisel tablolarınızın yanında tutabilirsiniz.</li>
+            <li><strong>FAISS (Facebook AI Similarity Search):</strong> Bellek içi (in-memory) çalışan ve GPU hızlandırmasıyla milyonlarca vektör arasında mikrosaniyeler mertebesinde arama yapabilen açık kaynak kütüphane.</li>
+            <li><strong>Mesafe Metrikleri:</strong> Semantik benzerlik hesaplamalarında en sık <strong>Cosine Distance</strong> veya <strong>Inner Product</strong> kullanılır.</li>
+          </ul>
+
+          <h2>4. Hibrit Arama (Hybrid Search) ve Re-Ranking</h2>
+          <p>
+            Yalnızca vektör araması bazen teknik ürün kodları, seri numaraları veya kesin isim eşleşmelerinde yetersiz kalabilir. Çünkü "ABC-1234" bir kavram değil kesin bir koddur.
+          </p>
+          <p>
+            Üst düzey kurumsal RAG mimarilerinde <strong>Hibrit Arama</strong> kullanılır:
+          </p>
+          <ul>
+            <li>Geleneksel kelime bazlı arama (BM25 / Full-Text Search) ile anahtar kelime eşleşmeleri bulunur.</li>
+            <li>Vektörel arama ile anlamsal olarak yakın belgeler bulunur.</li>
+            <li>İki sonuç listesi <strong>Reciprocal Rank Fusion (RRF)</strong> ile birleştirilir.</li>
+            <li>Son olarak bir <strong>Cross-Encoder Re-Ranker</strong> modeli (örneğin Cohere Re-rank veya BGE-Reranker) sonuçları soruyla alaka düzeyine göre yeniden sıralayarak en isabetli ilk 3-5 parçayı seçer.</li>
+          </ul>
+
+          <h2>5. Halüsinasyonu Önleyen Sistem Prompt Tasarımı</h2>
+          <p>
+            Modele verilecek sistem talimatı son derece katı ve kuralcı olmalıdır:
+          </p>
+          <pre><code>Sen kurumsal bir bilgi asistanısın.
+YALNIZCA aşağıdaki [BAĞLAM] bölümünde verilen bilgilere dayanarak yanıt ver.
+Eğer kullanıcının sorusunun yanıtı [BAĞLAM] içinde kesin olarak yer almıyorsa,
+asla tahmin yürütme ve tam olarak şu cevabı ver: 
+"Kurumsal dokümantasyonda bu konuyla ilgili doğrulanmış bir bilgi bulunmamaktadır."
+
+[BAĞLAM]:
+{retrieved_context_chunks}
+
+Kullanıcı Sorusu: {user_query}</code></pre>
+
+          <h2>Sonuç: Kurumsal Zekânın Geleceği</h2>
+          <p>
+            RAG mimarisi, şirketlerin hassas verilerini dışarıya çıkarmadan yerel veya özel sunucularda güvenli yapay zekâ asistanları ve akıllı İş Zekâsı (BI) sorgulama sistemleri kurmasının en güvenilir yoludur. Doğru veri hazırlığı, hibrit indeksleme ve sıkı bağlam denetimiyle birleştiğinde, işletmeler için paha biçilemez bir dijital hafıza yaratmaktadır.
+          </p>
+
+          <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <a href="modern-fullstack-java-gelistirici-yol-haritasi.html" class="btn-theme-outline" style="color: var(--text-main); border-color: var(--border);">← Önceki: Full-Stack Java Rehberi</a>
+            <a href="yapay-zeka-caginda-yazilim-muhendisliginin-donusumu.html" class="btn-theme-primary">Sonraki: Yazılım Mühendisliğinin Dönüşümü →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Multi-Column Dark Footer -->
+  <footer class="dilbeste-footer">
+    <div class="dilbeste-container footer-content-grid">
+      <div class="footer-col-brand">
+        <div class="footer-brand-header">
+          <img src="../assets/images/omer-avatar.jpg" alt="Ömer Faruk Balcı" class="footer-avatar">
+          <h3 class="footer-name">Ömer Faruk Balcı</h3>
+        </div>
+        <p class="footer-bio-text">
+          Yapay Zekâ (AI) destekli İş Zekâsı (BI) gösterge panelleri, analitik raporlama, Java, Spring Boot ve kurumsal full-stack yazılım mühendisliği.
+        </p>
+        <div class="footer-social-row">
+          <a href="https://github.com/omerbalcii" target="_blank" rel="noopener noreferrer" class="footer-soc-link" title="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/omerbalci" target="_blank" rel="noopener noreferrer" class="footer-soc-link" title="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col-links">
+        <h4 class="footer-heading">Hızlı Bağlantılar</h4>
+        <ul class="footer-nav-list">
+          <li><a href="../index.html#hero-slider">Anasayfa</a></li>
+          <li><a href="../index.html#about-section">Hakkımda</a></li>
+          <li><a href="../index.html#services-banners">Uzmanlıklar</a></li>
+          <li><a href="../index.html#experience-section">Kariyer Deneyimi</a></li>
+          <li><a href="../index.html#projects-section">Öne Çıkan Projeler</a></li>
+          <li><a href="index.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col-links">
+        <h4 class="footer-heading">Teknolojiler & Alanlar</h4>
+        <ul class="footer-nav-list">
+          <li><span>AI & BI Dashboards</span></li>
+          <li><span>Java & Spring Boot</span></li>
+          <li><span>Angular & TypeScript</span></li>
+          <li><span>PostgreSQL & Redis</span></li>
+          <li><span>Coğrafi Bilgi Sistemleri (GIS)</span></li>
+        </ul>
+      </div>
+
+      <div class="footer-col-contact">
+        <h4 class="footer-heading">İletişim</h4>
+        <p class="footer-contact-item">İstanbul, Türkiye</p>
+        <p class="footer-contact-item"><a href="mailto:balci.5698@gmail.com">balci.5698@gmail.com</a></p>
+        <a href="../index.html#contact-section" class="footer-cta-pill">İletişime Geç</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <div class="dilbeste-container footer-bottom-inner">
+        <p>&copy; 2026 Ömer Faruk Balcı • <a href="https://omerbalci.com.tr">omerbalci.com.tr</a>. Tüm hakları saklıdır.</p>
+        <p class="footer-tagline">Software Developer Engineer • AI & BI</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-fab-container">
+    <a href="mailto:balci.5698@gmail.com" class="fab-btn fab-mail" title="E-posta Gönder">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    </a>
+    <button class="fab-btn fab-top" id="scrollTopBtn" title="Yukarı Çık">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>

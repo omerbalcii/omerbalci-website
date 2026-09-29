@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java Servlet Mimarisi ve Spring MVC'nin Temelleri | Ömer Faruk Balcı</title>
+  <meta name="description" content="Java web ekosisteminin temeli olan Servlet standardı, Apache Tomcat web konteyneri, HTTP döngüsü ve Spring MVC DispatcherServlet çalışma mekanizması.">
+  <meta property="og:title" content="Java Servlet Mimarisi ve Spring MVC'nin Temelleri | Ömer Faruk Balcı">
+  <meta property="og:description" content="Modern framework'lerin arkasındaki perdeyi aralıyoruz: Servlet yaşam döngüsü, Thread havuzları ve DispatcherServlet orkestrasyonu.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://omerbalci.com.tr/blog/javada-servlet-mimarisi-ve-spring-mvc-temelleri.html">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="dilbeste-header" id="header">
+    <div class="dilbeste-container header-inner">
+      <a href="../index.html" class="brand-box">
+        <img src="../assets/images/omer-avatar.jpg" alt="Ömer Faruk Balcı" class="brand-avatar">
+        <div class="brand-text-wrap">
+          <span class="brand-name">Ömer Faruk Balcı</span>
+          <span class="brand-tag">Software Engineer • AI & BI</span>
+        </div>
+      </a>
+
+      <nav class="dilbeste-nav" id="navMenu">
+        <a href="../index.html#hero-slider" class="nav-link">Anasayfa</a>
+        <a href="../index.html#about-section" class="nav-link">Hakkımda</a>
+        <a href="../index.html#services-banners" class="nav-link">Uzmanlık</a>
+        <a href="../index.html#experience-section" class="nav-link">Deneyim</a>
+        <a href="../index.html#projects-section" class="nav-link">Projeler</a>
+        <a href="index.html" class="nav-link active">Blog</a>
+        <a href="../index.html#contact-section" class="nav-link btn-nav-cta">İletişim</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="mailto:balci.5698@gmail.com" class="header-mail-link d-none-sm">balci.5698@gmail.com</a>
+        
+        <button class="theme-toggle" id="themeToggle" aria-label="Temayı Değiştir" title="Karanlık / Aydınlık Mod">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <button class="hamburger-btn" id="mobileToggle" aria-label="Menü">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Article Container -->
+  <main class="section-padding">
+    <div class="dilbeste-container">
+      
+      <article>
+        <!-- Header -->
+        <div class="article-header">
+          <a href="index.html" class="article-back-link">← Blog Listesine Dön</a>
+          <div class="blog-meta-tags" style="justify-content: center; margin-bottom: 1rem;">
+            <span class="blog-cat-link">📁 Java</span>
+            <span class="blog-cat-link">📁 JakartaEE</span>
+            <span class="blog-cat-link">📁 Spring MVC</span>
+            <span class="blog-cat-link">📁 Derinlemesine Java</span>
+            <span class="blog-date-text">• 02 Haziran 2024</span>
+            <span class="blog-date-text">• ⏱️ 6 Dk Okuma</span>
+          </div>
+          <h1 class="article-main-title">Java Web Dünyasının Kalbi: Servlet Mimarisi ve Spring MVC'nin Çalışma Mekanizması</h1>
+        </div>
+
+        <!-- Content Body -->
+        <div class="article-content-body">
+          <div style="text-align: center; margin: 2rem 0 3rem;">
+            <img src="../assets/images/blog-servlet.png" alt="Java Servlet Mimarisi" style="max-width: 170px; margin: 0 auto; box-shadow: var(--shadow-sm); border-radius: 8px;">
+          </div>
+
+          <p>
+            Modern Java ekosisteminde Spring Boot ile çalışırken yalnızca birkaç anotasyon (<code>@RestController</code>, <code>@GetMapping</code>) ekleyerek saniyeler içinde REST API uçları yayınlayabiliyoruz. Ancak bu sihirli pratikliğin arkasında, 25 yılı aşkın süredir Java web dünyasının omurgasını oluşturan köklü bir standart yatar: <strong>Java Servlet Spesifikasyonu</strong>.
+          </p>
+
+          <blockquote>
+            "Spring Boot'un konfigürasyon büyüsünü gerçekten anlamak ve yüksek yük altında doğru kararlar verebilmek, alttaki Servlet konteynerinin (Tomcat) HTTP isteklerini nasıl karşıladığını bilmekten geçer."
+          </blockquote>
+
+          <h2>1. Web Konteyneri (Servlet Container) Nedir?</h2>
+          <p>
+            Geleneksel bir web sunucusu (Nginx, Apache HTTPD) yalnızca statik dosyaları (HTML, resim, CSS) sunarken; Java kodunu dinamik olarak çalıştıracak bir çalışma ortamına ihtiyaç duyarız. İşte bu ortama <strong>Servlet Konteyneri (Web Container)</strong> denir (Örn: Apache Tomcat, Eclipse Jetty, Undertow).
+          </p>
+          <p>
+            Konteynerin üstlendiği temel görevler:
+          </p>
+          <ul>
+            <li><strong>Ağ & Soket Yönetimi:</strong> TCP/IP bağlantılarını kabul eder, HTTP istek metnini parse ederek Java nesnelerine (<code>HttpServletRequest</code>) dönüştürür.</li>
+            <li><strong>Thread Havuzu (Thread Pool):</strong> Her gelen HTTP isteğini işletim sisteminden yeni bir thread açmak yerine önceden hazırlanmış bir thread havuzundan (Worker Thread) bir iş parçacığına teslim eder.</li>
+            <li><strong>Yaşam Döngüsü (Lifecycle) İdaresi:</strong> Servlet sınıflarının belleğe yüklenmesini, başlatılmasını ve sonlandırılmasını yönetir.</li>
+          </ul>
+
+          <h2>2. Servlet Yaşam Döngüsü (Lifecycle)</h2>
+          <p>
+            Bir Servlet sınıfı, konteyner tarafından yönetilen 3 ana evreden geçer:
+          </p>
+          <ol style="margin-left: 1.5rem; margin-bottom: 2rem; line-height: 1.8;">
+            <li><code>init(ServletConfig config)</code>: Servlet belleğe yüklendiğinde yalnızca <strong>bir kez</strong> çalıştırılır. Ağır konfigürasyonlar ve kaynak bağlantıları burada kurulur.</li>
+            <li><code>service(HttpServletRequest req, HttpServletResponse res)</code>: Gelen her istek için eşzamanlı olarak farklı bir thread içerisinde tetiklenir. HTTP metoduna göre (GET, POST, PUT, DELETE) ilgili <code>doGet()</code> veya <code>doPost()</code> metodunu çağırır.</li>
+            <li><code>destroy()</code>: Uygulama kapatılırken veya konteyner durdurulurken açık kalan dosya ve veritabanı bağlantılarını temizlemek için bir kez çağrılır.</li>
+          </ol>
+
+          <div style="background: var(--bg-surface); padding: 1.5rem 1.8rem; border-radius: var(--radius-md); border-left: 4px solid var(--accent); margin: 2rem 0;">
+            <strong style="color: var(--text-heading); font-size: 1.05rem;">Kritik Multithreading Uyarısı:</strong>
+            <p style="margin: 0.5rem 0 0; font-size: 0.95rem; line-height: 1.6;">
+              Servlet nesneleri bellekte <strong>Singleton</strong> olarak yaşar; ancak <code>service()</code> metodu aynı anda yüzlerce thread tarafından çağrılabilir. Bu yüzden bir Servlet (ve dolayısıyla Spring Controller) içinde kesinlikle durum tutan (stateful) sınıf değişkeni (instance variable) tanımlanmamalıdır; aksi halde thread-safety ihlali ve veri karışması yaşanır!
+            </p>
+          </div>
+
+          <h2>3. Spring MVC'nin Gizli Kahramanı: DispatcherServlet</h2>
+          <p>
+            Geleneksel Jakarta EE dünyasında her URL için ayrı bir Servlet yazmak gerekirdi (<code>/users</code> için UserServlet, <code>/orders</code> için OrderServlet). Bu durum devasa bir kod tekrarına yol açıyordu.
+          </p>
+          <p>
+            Spring Web MVC, bu sorunu <strong>Front Controller Tasarım Şablonu</strong> ile çözdü. Spring Boot uygulamanıza gelen tüm HTTP istekleri öncelikle tek bir merkezi servlete yönlendirilir: <code>DispatcherServlet</code>.
+          </p>
+          <p>
+            DispatcherServlet isteği aldığında şu adımları izler:
+          </p>
+          <ul>
+            <li><strong>HandlerMapping:</strong> İsteğin URL'ine ve HTTP metoduna bakan bileşen, bu isteği hangi <code>@Controller</code> sınıfının hangi metodunun karşılayacağını bulur.</li>
+            <li><strong>HandlerAdapter:</strong> İlgili controller metodunu çalıştırır; JSON body'sini Jackson kütüphanesiyle DTO nesnesine deserialize eder.</li>
+            <li><strong>HttpMessageConverter:</strong> Metodun döndüğü nesneyi (örneğin DTO) tekrar JSON formatına serialize ederek HTTP Response Body'sine yazar.</li>
+          </ul>
+
+          <h2>4. Filter vs. Interceptor: Farkı Bilmek Neden Önemli?</h2>
+          <p>
+            İstekleri Controller'a ulaşmadan önce araya girip incelemek veya değiştirmek istediğimizde iki mekanizma karşımıza çıkar:
+          </p>
+          <ul>
+            <li><strong>Servlet Filter:</strong> Konteyner seviyesindedir. İstek henüz Spring context'ine ve DispatcherServlet'e girmeden önce çalışır. Karakter kodlaması (UTF-8), CORS yapılandırması ve düşük seviyeli istek loglaması için idealdir.</li>
+            <li><strong>HandlerInterceptor:</strong> Spring MVC seviyesindedir. DispatcherServlet'ten sonra, Controller metodundan önce ve sonra çalışır. Spring bean'lerine doğrudan erişebilir; kullanıcı yetki doğrulaması ve iş akışı metrikleri için tercih edilir.</li>
+          </ul>
+
+          <h2>Sonuç: Temelleri Bilmenin Gücü</h2>
+          <p>
+            Java'da Servlet mimarisini ve Tomcat'in thread havuzunu anlamak; bir gün prodüksiyon ortamında "Connection Timeout", "Too Many Open Files" veya bellek kilitlenmeleriyle karşılaştığınızda sorunu dakikalar içinde tespit edip çözmenizi sağlayan en büyük mühendislik avantajıdır.
+          </p>
+
+          <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <a href="spring-boot-ile-kurumsal-web-mimarisi.html" class="btn-theme-outline" style="color: var(--text-main); border-color: var(--border);">← Önceki: Spring Boot Kurumsal Mimari</a>
+            <a href="index.html" class="btn-theme-primary">Blog Listesine Dön ↑</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Multi-Column Dark Footer -->
+  <footer class="dilbeste-footer">
+    <div class="dilbeste-container footer-content-grid">
+      <div class="footer-col-brand">
+        <div class="footer-brand-header">
+          <img src="../assets/images/omer-avatar.jpg" alt="Ömer Faruk Balcı" class="footer-avatar">
+          <h3 class="footer-name">Ömer Faruk Balcı</h3>
+        </div>
+        <p class="footer-bio-text">
+          Yapay Zekâ (AI) destekli İş Zekâsı (BI) gösterge panelleri, analitik raporlama, Java, Spring Boot ve kurumsal full-stack yazılım mühendisliği.
+        </p>
+        <div class="footer-social-row">
+          <a href="https://github.com/omerbalcii" target="_blank" rel="noopener noreferrer" class="footer-soc-link" title="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/omerbalci" target="_blank" rel="noopener noreferrer" class="footer-soc-link" title="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col-links">
+        <h4 class="footer-heading">Hızlı Bağlantılar</h4>
+        <ul class="footer-nav-list">
+          <li><a href="../index.html#hero-slider">Anasayfa</a></li>
+          <li><a href="../index.html#about-section">Hakkımda</a></li>
+          <li><a href="../index.html#services-banners">Uzmanlıklar</a></li>
+          <li><a href="../index.html#experience-section">Kariyer Deneyimi</a></li>
+          <li><a href="../index.html#projects-section">Öne Çıkan Projeler</a></li>
+          <li><a href="index.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col-links">
+        <h4 class="footer-heading">Teknolojiler & Alanlar</h4>
+        <ul class="footer-nav-list">
+          <li><span>AI & BI Dashboards</span></li>
+          <li><span>Java & Spring Boot</span></li>
+          <li><span>Angular & TypeScript</span></li>
+          <li><span>PostgreSQL & Redis</span></li>
+          <li><span>Coğrafi Bilgi Sistemleri (GIS)</span></li>
+        </ul>
+      </div>
+
+      <div class="footer-col-contact">
+        <h4 class="footer-heading">İletişim</h4>
+        <p class="footer-contact-item">İstanbul, Türkiye</p>
+        <p class="footer-contact-item"><a href="mailto:balci.5698@gmail.com">balci.5698@gmail.com</a></p>
+        <a href="../index.html#contact-section" class="footer-cta-pill">İletişime Geç</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <div class="dilbeste-container footer-bottom-inner">
+        <p>&copy; 2026 Ömer Faruk Balcı • <a href="https://omerbalci.com.tr">omerbalci.com.tr</a>. Tüm hakları saklıdır.</p>
+        <p class="footer-tagline">Software Developer Engineer • AI & BI</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-fab-container">
+    <a href="mailto:balci.5698@gmail.com" class="fab-btn fab-mail" title="E-posta Gönder">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    </a>
+    <button class="fab-btn fab-top" id="scrollTopBtn" title="Yukarı Çık">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>
